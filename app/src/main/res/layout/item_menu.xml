@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="itemMenu"
+            type="com.nur_hidayat_agung.bkmmobile.model.general.ItemMenu" />
+        <variable
+            name="callback"
+            type="com.nur_hidayat_agung.bkmmobile.callback.ListMenuCallback"/>
+        <variable
+            name="isCount"
+            type="Integer"/>
+
+        <variable
+            name="count"
+            type="String"/>
+
+    </data>
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:onClick="@{() -> callback.onClick(itemMenu)}"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_section">
+        <!--<ImageView-->
+            <!--android:layout_width="75dp"-->
+            <!--android:layout_height="75dp"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:id="@+id/iv_item_menu"-->
+            <!--android:src="@drawable/menu_trip"-->
+            <!--android:scaleType="fitCenter"/>-->
+
+        <GridLayout
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_centerHorizontal="true"
+            android:columnCount="2">
+            <FrameLayout
+                android:layout_width="90dp"
+                android:layout_height="90dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/iv_item_menu"
+                    android:src="@drawable/menu_trip"
+                    android:scaleType="fitCenter"/>
+                <RelativeLayout
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_gravity="top|end"
+                    android:background="@drawable/circle_red"
+                    android:visibility="@{isCount}">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{count}"
+                        android:padding="0dp"
+                        android:layout_margin="0dp"
+                        android:textColor="@color/whiteGrey"
+                        android:layout_centerInParent="true"
+                        android:textSize="7sp"
+                        />
+                </RelativeLayout>
+
+            </FrameLayout>
+        </GridLayout>
+
+        <!--<ru.nikartm.support.ImageBadgeView-->
+            <!--android:id="@+id/iv_item_menu"-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:scaleType="fitCenter"-->
+            <!--app:ibv_badgeValue="100"-->
+            <!--app:ibv_badgeTextSize="12sp"-->
+            <!--app:ibv_fixedBadgeRadius="15dp"-->
+            <!--app:ibv_badgeTextStyle="bold"-->
+            <!--app:ibv_badgeTextColor="#ffffff"-->
+            <!--app:ibv_badgeColor="@color/bg_red"-->
+            <!--app:ibv_badgeLimitValue="false"-->
+            <!--android:src="@drawable/menu_trip" />-->
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_section"
+        android:id="@+id/tv_item_menu"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:text="@{itemMenu.menuName}" />
+</RelativeLayout>
+</layout>

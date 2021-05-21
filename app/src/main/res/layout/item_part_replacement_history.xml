@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="history"
+            type="com.nur_hidayat_agung.bkmmobile.model.service.ItemPartReplacementHistory" />
+
+    </data>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/std_padding"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/std_padding"
+            android:paddingRight="@dimen/std_padding"
+            android:paddingBottom="@dimen/std_padding_small"
+            android:paddingTop="@dimen/std_padding_small">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".3"
+                android:text="No."
+                android:textSize="14sp"
+                android:textColor="@color/text_grey"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:textAlignment="textEnd"
+                android:text="@{history.transactionCode}"
+                android:textSize="14sp"
+                android:textColor="@color/text_grey"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/std_padding"
+            android:paddingRight="@dimen/std_padding"
+            android:paddingBottom="@dimen/std_padding_small"
+            android:paddingTop="@dimen/std_padding_small">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".3"
+                android:text="Merk Part"
+                android:textSize="14sp"
+                android:textColor="@color/text_grey"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:textAlignment="textEnd"
+                android:text="@{history.brandName}"
+                android:textSize="14sp"
+                android:textColor="@color/text_grey"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/std_padding"
+            android:paddingRight="@dimen/std_padding"
+            android:paddingBottom="@dimen/std_padding_small"
+            android:paddingTop="@dimen/std_padding_small">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".3"
+                android:text="Pemohon"
+                android:textSize="14sp"
+                android:textColor="@color/text_grey"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:textAlignment="textEnd"
+                android:text="@{history.requestBy}"
+                android:textSize="14sp"
+                android:textColor="@color/text_grey"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/std_padding"
+            android:paddingRight="@dimen/std_padding"
+            android:paddingBottom="@dimen/std_padding_small"
+            android:paddingTop="@dimen/std_padding_small">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".3"
+                android:text="Tgl Ganti"
+                android:textSize="14sp"
+                android:textColor="@color/text_grey"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:textAlignment="textEnd"
+                android:text="@{history.transactionDate}"
+                android:textSize="14sp"
+                android:textColor="@color/text_grey"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/std_padding"
+            android:paddingRight="@dimen/std_padding"
+            android:paddingBottom="@dimen/std_padding_small"
+            android:paddingTop="@dimen/std_padding_small">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".3"
+                android:text="Umur (hari)"
+                android:textSize="14sp"
+                android:textColor="@color/text_grey"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:textAlignment="textEnd"
+                android:text="@{history.days}"
+                android:textSize="14sp"
+                android:textColor="@color/text_grey"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="@dimen/std_padding_small"
+        android:layout_marginRight="@dimen/std_padding_small"
+        android:layout_height="2dp"
+        android:background="@color/grey_line"
+        />
+
+
+</LinearLayout>
+</layout>

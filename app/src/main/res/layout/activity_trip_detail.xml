@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="detailTripVM"
+            type="com.nur_hidayat_agung.bkmmobile.viewmodel.trip.TripDetailVM" />
+
+        <variable
+            name="isSubmit"
+            type="Boolean" />
+
+        <variable
+            name="pictureCallback"
+            type="com.nur_hidayat_agung.bkmmobile.callback.PictureDetailCallBack" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".ui.trip.TripDetailActivity"
+            android:background="@color/bg_grey"
+            android:focusableInTouchMode="true"
+            android:id="@+id/ll_main_layout">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bg_header_trip" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingTop="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".85"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Nomor DO :"
+                                android:textColor="@color/bg_grey_"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{detailTripVM.trip.getDoFromHistory}"
+                                android:textColor="@color/text_grey"
+                                android:textStyle="bold"
+                                android:id="@+id/tv_trip_det_do_number"/>
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".15">
+
+                            <ImageView
+                                android:id="@+id/iv_det_trip_qr_code"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="8dp"
+                                app:imageUrlQR="@{detailTripVM.LDtripDetail.getQrcode}"
+                                android:onClick="@{() -> detailTripVM.openQRDetail()}"
+                                />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_marginLeft="@dimen/std_padding_small"
+                        android:layout_marginRight="@dimen/std_padding_small"
+                        android:layout_height="2dp"
+                        android:background="@color/colorPrimary"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight=".4"
+                            android:text="DO Kecil"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight=".6"
+                            android:textAlignment="textEnd"
+                            android:text="@{detailTripVM.LDtripDetail.sub_do}"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_grey"
+                            android:textStyle="bold"
+                            android:id="@+id/tv_trip_det_small_do"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight=".4"
+                            android:text="Pengemudi"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight=".6"
+                            android:textAlignment="textEnd"
+                            android:text="@{detailTripVM.trip.getDriver_name}"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_grey"
+                            android:textStyle="bold"
+                            android:id="@+id/tv_trip_det_driver"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight=".4"
+                            android:text="No. Kendaraan"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight=".6"
+                            android:textAlignment="textEnd"
+                            android:text="@{detailTripVM.trip.vehicle_number}"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_grey"
+                            android:textStyle="bold"
+                            android:id="@+id/tv_trip_det_vehicle_no"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight=".4"
+                            android:text="Uang Jalan"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight=".6"
+                            android:textAlignment="textEnd"
+                            android:text="@{detailTripVM.LDtripDetail.trvl_expenses}"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_grey"
+                            android:textStyle="bold"
+                            android:id="@+id/tv_trip_det_trvl_expenses"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight=".4"
+                            android:text="PKS"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight=".6"
+                            android:textAlignment="textEnd"
+                            android:text="@{detailTripVM.trip.getPks_name}"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_grey"
+                            android:textStyle="bold"
+                            android:id="@+id/tv_trip_det_pks"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight=".4"
+                            android:text="Tujuan Bongkar"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight=".6"
+                            android:textAlignment="textEnd"
+                            android:text="@{detailTripVM.trip.getDestination_name}"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_grey"
+                            android:textStyle="bold"
+                            android:id="@+id/tv_trip_det_dest"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight=".4"
+                            android:text="Komodity"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight=".7"
+                            android:textAlignment="textEnd"
+                            android:text="@{detailTripVM.trip.getCommodity_name}"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_grey"
+                            android:textStyle="bold"
+                            android:id="@+id/tv_trip_det_komodity"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/std_padding_small"
+                android:entries="@array/trip_arrays"
+                android:prompt="@string/trip_status_prompt"
+                android:id="@+id/sp_trip_status"
+                app:ms_text_color="@color/white"
+                app:ms_background_color="@color/bg_gren"
+                />
+
+            <!--<Spinner-->
+                <!--android:id="@+id/sp_trip_status"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:padding="@dimen/std_padding_small"-->
+                <!--android:entries="@array/trip_arrays"-->
+                <!--android:prompt="@string/trip_status_prompt"-->
+                <!--android:layout_margin="@dimen/std_padding"-->
+                <!--android:background="@drawable/spinner"-->
+                <!--android:selectedItemPosition="@={detailTripVM.spinerPosition}"/>-->
+
+            <!--<com.asksira.dropdownview.DropDownView-->
+                <!--android:id="@+id/dropdownview"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--app:placeholder_text="Please select"-->
+                <!--app:dropdownItem_text_gravity="start"-->
+                <!--app:dropdownItem_compound_drawable_selected="@drawable/back_ground_round_orange"-->
+                <!--app:filter_bar_background_color="@android:color/holo_orange_dark"-->
+                <!--app:filter_text_color="@android:color/white"-->
+                <!--app:arrow_drawable="@drawable/dropdown_green1"-->
+                <!--app:arrow_width="24dp"-->
+                <!--app:dropDownItem_text_color_selected="@android:color/holo_orange_dark"-->
+                <!--app:divider_color="@android:color/holo_orange_light"-->
+                <!--app:dropDownItem_text_size_selected="18sp"-->
+                <!--app:bottom_decorator_color="@android:color/holo_orange_dark"-->
+                <!--app:bottom_decorator_height="4dp"-->
+                <!--app:expansion_style="drawer"-->
+                <!--app:last_item_has_divider="false"/>-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/grey"
+                android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small"
+                        android:layout_marginTop="@dimen/std_padding">
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".8"
+                            android:id="@+id/edt_sp_no"
+                            android:paddingLeft="7dp"
+                            android:paddingRight="7dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:textSize="18sp"
+                            android:inputType="numberDecimal"
+                            android:layout_marginRight="5dp"
+                            android:hint="No. SPB"
+                            android:onTextChanged="@{(text, start, before, count) -> detailTripVM.onUsernameTextChanged(text,detailTripVM.trigs[2])}"
+                            android:background="@drawable/bg_round_with_border"
+                            android:text="@={detailTripVM.LDtripDetail.spb_number}"/>
+
+                        <!--<Button-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight=".2"-->
+                            <!--android:text="Simpan"-->
+                            <!--android:textColor="@color/whiteGrey2"-->
+                            <!--android:onClick="@{() -> detailTripVM.saveSpb()}"-->
+                            <!--android:background="@drawable/back_ground_round_green"-->
+                            <!--android:id="@+id/btn_save_spb"-->
+                            <!--android:visibility="gone"/>-->
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bg_grey_"
+                        android:textStyle="bold"
+                        android:text="@{detailTripVM.LDtripDetail.getJustDO}"
+                        android:layout_marginLeft="@dimen/std_padding"
+                        android:layout_marginRight="@dimen/std_padding"
+                        android:layout_marginTop="@dimen/std_padding"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:id="@+id/edt_load_ammount"
+                            android:paddingLeft="7dp"
+                            android:paddingRight="7dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:textSize="18sp"
+                            android:hint="Muat (Kg)"
+                            android:inputType="numberDecimal"
+                            android:layout_marginRight="5dp"
+                            android:onTextChanged="@{(text, start, before, count) -> detailTripVM.onUsernameTextChanged(text,detailTripVM.preTrigs[0])}"
+                            android:background="@drawable/bg_round_with_border"
+                            android:text="@={detailTripVM.LDtripDetail.amount_sent}"/>
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:id="@+id/edt_unloadload_ammount"
+                            android:paddingLeft="7dp"
+                            android:paddingRight="7dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:textSize="18sp"
+                            android:inputType="numberDecimal"
+                            android:hint="Bongkar (Kg)"
+                            android:layout_marginRight="5dp"
+                            android:onTextChanged="@{(text, start, before, count) -> detailTripVM.onUsernameTextChanged(text,detailTripVM.trigs[0])}"
+                            android:text="@={detailTripVM.LDtripDetail.amount_received}"
+                            android:background="@drawable/bg_round_with_border"/>
+
+                        <!--<Button-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight=".2"-->
+                            <!--android:text="Simpan"-->
+                            <!--android:textColor="@color/whiteGrey2"-->
+                            <!--android:onClick="@{() -> detailTripVM.saveDo()}"-->
+                            <!--android:background="@drawable/back_ground_round_green"-->
+                            <!--android:id="@+id/btn_save_do"/>-->
+
+                    </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/bg_grey_"
+                    android:textStyle="bold"
+                    android:text="@{detailTripVM.LDtripDetail.Do_connectObject.getDo_number}"
+                    android:layout_marginLeft="@dimen/std_padding"
+                    android:layout_marginRight="@dimen/std_padding"
+                    android:layout_marginTop="@dimen/std_padding"
+                    android:visibility="@{detailTripVM.doConectLiveData}"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/std_padding"
+                    android:paddingRight="@dimen/std_padding"
+                    android:paddingBottom="@dimen/std_padding_small"
+                    android:paddingTop="@dimen/std_padding_small"
+                    android:visibility="@{detailTripVM.doConectLiveData}">
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:id="@+id/edt_load_ammount_do_conn"
+                        android:paddingLeft="7dp"
+                        android:paddingRight="7dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="18sp"
+                        android:hint="Muat (Kg)"
+                        android:inputType="numberDecimal"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/bg_round_with_border"
+                        android:text="@={detailTripVM.LDtripDetail.Do_connectObject.amount_sent}"
+                        android:onTextChanged="@{(text, start, before, count) -> detailTripVM.onUsernameTextChanged(text,detailTripVM.preTrigs[1])}"/>
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:id="@+id/edt_unloadload_ammount_do_conn"
+                        android:paddingLeft="7dp"
+                        android:paddingRight="7dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="18sp"
+                        android:inputType="numberDecimal"
+                        android:hint="Bongkar (Kg)"
+                        android:layout_marginRight="5dp"
+                        android:text="@={detailTripVM.LDtripDetail.Do_connectObject.amount_received}"
+                        android:onTextChanged="@{(text, start, before, count) -> detailTripVM.onUsernameTextChanged(text,detailTripVM.trigs[1])}"
+                        android:background="@drawable/bg_round_with_border"/>
+
+                    <!--<Button-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight=".2"-->
+                        <!--android:text="Simpan"-->
+                        <!--android:textColor="@color/whiteGrey2"-->
+                        <!--android:onClick="@{() -> detailTripVM.saveSecDO()}"-->
+                        <!--android:background="@drawable/back_ground_round_green"-->
+                        <!--android:id="@+id/btn_save_do_conn"/>-->
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@color/grey"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tap untuk ambil gambar"
+                    android:textColor="@color/bg_grey_"
+                    android:layout_marginRight="@dimen/std_padding"
+                    android:layout_marginLeft="@dimen/std_padding"
+                    android:layout_marginTop="@dimen/std_padding"
+                    android:textStyle="bold"/>
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="200dp"-->
+                    <!--android:layout_margin="@dimen/std_padding"-->
+                    <!--android:background="@drawable/back_ground_round_grey2"-->
+                    <!--&gt;-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_centerInParent="true"-->
+                        <!--android:id="@+id/iv_camera"-->
+                        <!--app:imageUrl="@{detailTripVM.LDtripDetail.getSpb}"-->
+                        <!--android:onClick="@{() -> detailTripVM.takePicture()}"/>-->
+
+                <!--</RelativeLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/std_padding"
+                    android:background="@drawable/back_ground_round_grey2"
+                    android:orientation="horizontal"
+                    >
+
+                    <ImageView
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:id="@+id/iv_camera"
+                        app:tripImageUrl="@{detailTripVM.LDtripDetail.getSpb}"
+                        android:onClick="@{() -> detailTripVM.takePicture()}" />
+
+                    <ImageView
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:id="@+id/iv_camera2"
+                        android:src="@drawable/back_ground_round_grey2"
+                        android:visibility="visible"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/std_padding"
+                android:text="Selesai"
+                android:textColor="@color/whiteGrey2"
+                android:background="@color/colorPrimary"
+                android:id="@+id/btn_save_finish"
+                android:onClick="@{() -> detailTripVM.confirmFinish()}"
+                />
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

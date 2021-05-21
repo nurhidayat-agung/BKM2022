@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="trip"
+            type="com.nur_hidayat_agung.bkmmobile.model.trip.Trip" />
+
+        <variable
+            name="callback"
+            type="com.nur_hidayat_agung.bkmmobile.callback.ListTripCallBack"/>
+    </data>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/general_bg"
+            android:onClick="@{() -> callback.onClick(trip)}"
+            >
+            <TextView
+                android:paddingRight="@dimen/std_padding"
+                android:paddingLeft="@dimen/std_padding"
+                android:paddingTop="@dimen/std_padding_small"
+                android:paddingBottom="@dimen/std_padding_small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{trip.getMonthName}"
+                android:background="@color/heder_menu"
+                android:id="@+id/tv_item_trip_header"
+                android:visibility="gone"/>
+
+            <!--<View-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_marginLeft="@dimen/std_padding_small"-->
+                <!--android:layout_marginRight="@dimen/std_padding_small"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:background="@color/grey_line" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@null">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight=".70"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@null">
+
+                    <TextView
+                        android:layout_marginTop="@dimen/std_padding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{trip.getDoFromHistory}"
+                        android:textColor="@color/text_blue"
+                        android:textSize="15sp"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:id="@+id/tv_item_trip_do"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{trip.getTravelDate}"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:textStyle="italic"
+                        android:textSize="13sp"
+                        android:visibility="gone"
+                        android:id="@+id/tv_item_trip_travel_date"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@null"
+                        android:layout_marginTop="@dimen/std_padding_small"
+                        android:layout_marginBottom="@dimen/std_padding">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/fast_delivery"
+                            android:layout_marginLeft="@dimen/std_padding"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/std_padding"
+                            android:text="@{trip.getPks_name}"
+                            android:textStyle="bold"
+                            android:id="@+id/tv_item_trip_pks_name"/>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/right_arrow"
+                            android:layout_marginLeft="@dimen/std_padding_small"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/std_padding_small"
+                            android:text="@{trip.getDest}"
+                            android:textStyle="bold"
+                            android:id="@+id/tv_item_trip_dest"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".30"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_item_trip_status"
+                        android:text="@{trip.status}"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/colorPrimaryDark"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="@dimen/std_padding_small"
+                android:layout_marginRight="@dimen/std_padding_small"
+                android:layout_marginTop="@dimen/std_padding"
+                android:layout_marginBottom="@dimen/std_padding"
+                android:layout_height="2dp"
+                android:background="@color/grey_line"
+                />
+        </LinearLayout>
+
+</layout>

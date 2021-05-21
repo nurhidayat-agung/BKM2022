@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="userDetail"
+            type="com.nur_hidayat_agung.bkmmobile.model.login.UserDetailRes" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.home.HomeFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context=".ui.home.HomeActivity"
+            tools:showIn="@layout/app_bar_home"
+            android:orientation="vertical">
+
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="180dp"-->
+                <!--android:background="@drawable/bg_home_grad">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_welcome"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerInParent="true"-->
+                    <!--android:text="@{userDetail.welcomeMessage}"-->
+                    <!--android:textAlignment="center"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textColor="@color/whiteGrey2"/>-->
+
+
+            <!--</RelativeLayout>-->
+            <android.support.v4.widget.SwipeRefreshLayout
+
+                android:id="@+id/swipe_container"
+                android:layout_width="match_parent"
+                android:layout_height="220dp">
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:id="@+id/rv_ann"
+                    />
+            </android.support.v4.widget.SwipeRefreshLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rv_menu"
+                app:layoutManager="android.support.v7.widget.GridLayoutManager"
+                app:spanCount="2"/>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_marginTop="50dp"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:gravity="center">-->
+                <!--<android.support.v7.widget.CardView-->
+                    <!--xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
+                    <!--android:id="@+id/cv_history"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_width="75dp"-->
+                    <!--android:layout_height="75dp"-->
+                    <!--card_view:cardCornerRadius="10dp"-->
+                    <!--android:layout_margin="20dp"-->
+                    <!--card_view:cardBackgroundColor="@color/menu1">-->
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent">-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_centerInParent="true"-->
+                            <!--android:text="History"-->
+                            <!--android:textColor="@color/whiteGrey"-->
+                            <!--android:textAlignment="center"-->
+                            <!--android:textStyle="bold"/>-->
+                    <!--</RelativeLayout>-->
+
+
+                <!--</android.support.v7.widget.CardView>-->
+
+                <!--<android.support.v7.widget.CardView-->
+                    <!--xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
+                    <!--android:id="@+id/cv_trip"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_width="75dp"-->
+                    <!--android:layout_height="75dp"-->
+                    <!--card_view:cardCornerRadius="10dp"-->
+                    <!--android:layout_margin="20dp"-->
+                    <!--card_view:cardBackgroundColor="@color/menu2">-->
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent">-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_centerInParent="true"-->
+                            <!--android:text="Trip"-->
+                            <!--android:textStyle="bold"-->
+                            <!--android:textColor="@color/whiteGrey"-->
+                            <!--android:textAlignment="center" />-->
+                    <!--</RelativeLayout>-->
+
+
+                <!--</android.support.v7.widget.CardView>-->
+
+                <!--<android.support.v7.widget.CardView-->
+                    <!--xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
+                    <!--android:id="@+id/cv_pesan"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_width="75dp"-->
+                    <!--android:layout_height="75dp"-->
+                    <!--card_view:cardCornerRadius="10dp"-->
+                    <!--android:layout_margin="20dp"-->
+                    <!--card_view:cardBackgroundColor="@color/menu3">-->
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent">-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_centerInParent="true"-->
+                            <!--android:text="Bantuan"-->
+                            <!--android:textStyle="bold"-->
+                            <!--android:textColor="@color/whiteGrey"-->
+                            <!--android:textAlignment="center" />-->
+                    <!--</RelativeLayout>-->
+
+
+                <!--</android.support.v7.widget.CardView>-->
+            <!--</LinearLayout>-->
+
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

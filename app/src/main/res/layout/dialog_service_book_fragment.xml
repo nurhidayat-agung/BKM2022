@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="history"
+            type="com.nur_hidayat_agung.bkmmobile.model.service.ServiceItem" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingRight="@dimen/spacing_middle"
+                android:paddingLeft="@dimen/spacing_middle"
+                android:paddingTop="@dimen/spacing_middle"
+                android:paddingBottom="@dimen/spacing_middle"
+                >
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Detail Buku Servis"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/bt_save"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="right"
+                    android:paddingLeft="@dimen/spacing_xsmall"
+                    android:paddingRight="@dimen/spacing_xsmall"
+                    android:text="CLOSE"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nested_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:scrollingCache="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/std_padding_small">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingTop="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".4"
+                            android:text="Tanggal Servis"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".6"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:dateFormat="@{history.service_date}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingTop="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".4"
+                            android:text="KM Servis"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".6"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:dateFormat="@{history.km}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingTop="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".4"
+                            android:text="Aktual KM Servis"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".6"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:dateFormat="@{history.actual_km}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingTop="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".4"
+                            android:text="Keterangan"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".6"
+                            android:text="@{history.description}"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/text_grey"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="@dimen/std_padding_small"
+                    android:layout_marginRight="@dimen/std_padding_small"
+                    android:background="@color/grey_line" />
+
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

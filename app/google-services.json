@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "642838179077",
+    "firebase_url": "https://bkmmobile-garisbesar.firebaseio.com",
+    "project_id": "bkmmobile-garisbesar",
+    "storage_bucket": "bkmmobile-garisbesar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642838179077:android:2321d888573a0805",
+        "android_client_info": {
+          "package_name": "com.garisbesar.bkmmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642838179077-8hc6tk9a6mlnqlkpp61ob3ebcbaqse4o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmj2l4tGv4dWoxM8so8AbegoH6y6sDimw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "642838179077-8hc6tk9a6mlnqlkpp61ob3ebcbaqse4o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

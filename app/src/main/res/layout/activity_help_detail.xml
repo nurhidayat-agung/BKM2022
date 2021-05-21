@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="helpDet"
+            type="com.nur_hidayat_agung.bkmmobile.model.help.Help"/>
+    </data>
+
+<android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/margin_long"
+    android:paddingBottom="@dimen/margin_long"
+    android:layout_marginRight="@dimen/std_padding_small"
+    android:layout_marginLeft="@dimen/std_padding_small"
+    app:cardCornerRadius="7dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true"
+    tools:context=".ui.help.HelpDetail">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_item_help_title"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:padding="@dimen/std_padding"
+                android:text="@{helpDet.title}" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_item_help_content"
+                android:textAlignment="textStart"
+                android:justificationMode="inter_word"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:padding="@dimen/std_padding"
+                android:text="@{helpDet.value}" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.v7.widget.CardView>
+</layout>

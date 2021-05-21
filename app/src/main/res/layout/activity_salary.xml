@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="payslip"
+            type="com.nur_hidayat_agung.bkmmobile.model.payslip.PaySlip"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/layout1"
+            android:layout_marginBottom="@dimen/std_padding_small">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textAlignment="viewStart"
+                android:id="@+id/tv_month_year_salary"
+                android:layout_marginLeft="@dimen/std_padding"
+                android:layout_marginTop="@dimen/std_padding_small"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".4"
+                android:text="Atur Tanggal"
+                android:textColor="@color/blue"
+                android:textAlignment="textEnd"
+                android:layout_marginTop="@dimen/std_padding_small"
+                android:layout_marginRight="@dimen/std_padding"
+                android:layout_marginLeft="@dimen/std_padding_small"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:id="@+id/btn_select_month"/>
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/layout2"
+            android:layout_below="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/layout3">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:context=".ui.salary.SalaryActivity">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pendapatan"
+                        android:padding="@dimen/std_padding"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:background="@color/text_grey"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".3"
+                            android:text="Gaji Trip"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".7"
+                            android:textAlignment="textEnd"
+                            android:text="@{payslip.salary_trip}"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"
+                            android:id="@+id/tv_det_sal_salary_trip"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".3"
+                            android:text="Bonus Trip"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".7"
+                            android:textAlignment="textEnd"
+                            android:text="@{payslip.bonus_trip}"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"
+                            android:id="@+id/tv_det_sal_bonus_trip"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small"
+                        android:visibility="@{payslip.isPlus}">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".3"
+                            android:text="Penyesuaian"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".7"
+                            android:textAlignment="textEnd"
+                            android:text="@{payslip.get_Adjustment}"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"
+                            android:id="@+id/tv_det_sal_adjustment_plus"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".3"
+                            android:text="THR"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".7"
+                            android:textAlignment="textEnd"
+                            android:text="@{payslip.thr}"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"
+                            android:id="@+id/tv_det_sal_thr"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".3"
+                            android:text="Insentif"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".7"
+                            android:textAlignment="textEnd"
+                            android:text="@{payslip.insentif}"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"
+                            android:id="@+id/tv_det_sal_insentif"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:textSize="14sp"
+                            android:text="Bonus Antar Teman"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:textAlignment="textEnd"
+                            android:text="@{payslip.bonus_decrease}"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"
+                            android:id="@+id/tv_det_sal_dec_bonus"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".3"
+                            android:text="Total"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".7"
+                            android:textAlignment="textEnd"
+                            android:text="@{payslip.totalIncome}"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_gren"
+                            android:id="@+id/tv_det_sal_total_income"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/text_grey"
+                        android:padding="@dimen/std_padding"
+                        android:text="Potongan"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:textSize="14sp"
+                            android:text="BPJS Ketenagakerjaan"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:textAlignment="textEnd"
+                            android:text="@{payslip.bpjs_ket}"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"
+                            android:id="@+id/tv_det_sal_bpjs_labour"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".4"
+                            android:textSize="14sp"
+                            android:text="BPJS Kesehatan"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".6"
+                            android:textAlignment="textEnd"
+                            android:text="@{payslip.bpjs_kes}"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"
+                            android:id="@+id/tv_det_sal_bpjs_medic"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small"
+                        android:visibility="@{payslip.isMinus}">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".4"
+                            android:textSize="14sp"
+                            android:text="Penyesuaian"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".6"
+                            android:textAlignment="textEnd"
+                            android:text="@{payslip.get_Adjustment}"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"
+                            android:id="@+id/tv_det_adjusment_min"/>
+
+                    </LinearLayout>
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:paddingLeft="@dimen/std_padding"-->
+                        <!--android:paddingRight="@dimen/std_padding"-->
+                        <!--android:paddingBottom="@dimen/std_padding_small"-->
+                        <!--android:paddingTop="@dimen/std_padding_small">-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight=".4"-->
+                            <!--android:textSize="14sp"-->
+                            <!--android:text="PPH21"-->
+                            <!--android:textColor="@color/bg_grey_"/>-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight=".6"-->
+                            <!--android:textAlignment="textEnd"-->
+                            <!--android:text="@{payslip.pph21}"-->
+                            <!--android:textSize="14sp"-->
+                            <!--android:textColor="@color/bg_grey_"-->
+                            <!--android:id="@+id/tv_det_sal_pph21"/>-->
+
+                    <!--</LinearLayout>-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".3"
+                            android:text="Total"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".7"
+                            android:textAlignment="textEnd"
+                            android:text="@{payslip.totalDeduction}"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_red"
+                            android:id="@+id/tv_det_sal_total_deduction"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/text_grey"
+                        android:padding="@dimen/std_padding"
+                        android:text="Pengeluaran"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".4"
+                            android:textSize="14sp"
+                            android:text="Angsuran Susut"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".6"
+                            android:textAlignment="textEnd"
+                            android:text="@{payslip.dept_payment}"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"
+                            android:id="@+id/tv_det_sal_debt_payment"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".4"
+                            android:textSize="14sp"
+                            android:text="Angsuran Pinjaman"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".6"
+                            android:textAlignment="textEnd"
+                            android:text="@{payslip.loan_payment}"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"
+                            android:id="@+id/tv_det_sal_loan_payment"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".4"
+                            android:textSize="14sp"
+                            android:text="Angsuran Lain"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".6"
+                            android:textAlignment="textEnd"
+                            android:text="0"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"
+                            android:id="@+id/tv_det_sal_other_payment"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/std_padding"
+                        android:paddingRight="@dimen/std_padding"
+                        android:paddingBottom="@dimen/std_padding_small"
+                        android:paddingTop="@dimen/std_padding_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".3"
+                            android:text="Total"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_grey_"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".7"
+                            android:textAlignment="textEnd"
+                            android:text="@{payslip.totalPayment}"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:textColor="@color/bg_red"
+                            android:id="@+id/tv_det_sal_total_payment"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="#dddddd">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/grey_line"
+                            android:padding="@dimen/std_padding"
+                            android:text="Info"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/std_padding"
+                            android:paddingRight="@dimen/std_padding"
+                            android:paddingBottom="@dimen/std_padding_small"
+                            android:paddingTop="@dimen/std_padding_small">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".4"
+                                android:textSize="14sp"
+                                android:text="Jumlah Perjalanan"
+                                android:textColor="@color/bg_grey_"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".6"
+                                android:textAlignment="textEnd"
+                                android:text="@{payslip.number_of_trip}"
+                                android:textSize="14sp"
+                                android:textColor="@color/bg_grey_"
+                                android:id="@+id/tv_det_number_of_trip"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/std_padding"
+                            android:paddingRight="@dimen/std_padding"
+                            android:paddingBottom="@dimen/std_padding_small"
+                            android:paddingTop="@dimen/std_padding_small">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".4"
+                                android:textSize="14sp"
+                                android:text="Total Tabungan"
+                                android:textColor="@color/bg_grey_"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".6"
+                                android:textAlignment="textEnd"
+                                android:text="@{payslip.saving}"
+                                android:textSize="14sp"
+                                android:textColor="@color/bg_grey_"
+                                android:id="@+id/tv_det_sal_saving"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/std_padding"
+                            android:paddingRight="@dimen/std_padding"
+                            android:paddingBottom="@dimen/std_padding_small"
+                            android:paddingTop="@dimen/std_padding_small">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".4"
+                                android:textSize="14sp"
+                                android:text="Sisa Hutang YTD"
+                                android:textColor="@color/bg_grey_"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".6"
+                                android:textAlignment="textEnd"
+                                android:text="@{payslip.remaining_loan}"
+                                android:textSize="14sp"
+                                android:textColor="@color/bg_grey_"
+                                android:id="@+id/tv_det_sal_remain_loan"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/std_padding"
+                            android:paddingRight="@dimen/std_padding"
+                            android:paddingBottom="@dimen/std_padding_small"
+                            android:paddingTop="@dimen/std_padding_small">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".4"
+                                android:textSize="14sp"
+                                android:text="Sisa Pinjaman YTD"
+                                android:textColor="@color/bg_grey_"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".6"
+                                android:textAlignment="textEnd"
+                                android:text="@{payslip.remaining_dept}"
+                                android:textSize="14sp"
+                                android:textColor="@color/bg_grey_"
+                                android:id="@+id/tv_det_sal_remain_dept"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:id="@+id/layout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/std_padding"
+            android:paddingRight="@dimen/std_padding"
+            android:paddingBottom="@dimen/std_padding_small"
+            android:paddingTop="@dimen/std_padding_small"
+            android:background="@color/bg_gren">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".3"
+                android:text="Netto Gaji"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/whiteGrey2"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:textAlignment="textEnd"
+                android:text="@{payslip.THP}"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/whiteGrey2"
+                android:id="@+id/tv_det_sal_total_thp"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</layout>

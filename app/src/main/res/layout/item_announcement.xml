@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ann"
+            type="com.nur_hidayat_agung.bkmmobile.model.login.LoginAnnouncement" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:id="@+id/rl_ann_header"
+        app:BackRLAnn="@{ann.background_color}">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/iv_ann_header"
+            android:visibility="@{ann.visibility}"
+            app:imageUrlAnn="@{ann.background_img}"
+            android:scaleType="center"/>
+
+        <TextView
+            android:id="@+id/tv_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@{ann.announcement}"
+            android:textAlignment="center"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:textColor="@color/whiteGrey2"
+            app:fontColorHeader="@{ann.font_color}"
+            app:fontSizeHeader="@{ann.font_size}"/>
+
+
+    </RelativeLayout>
+
+</layout>

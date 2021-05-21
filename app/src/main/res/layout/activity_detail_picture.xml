@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="url"
+            type="String" />
+    </data>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.general.DetailPicture">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_det_qr_code"
+        android:layout_centerInParent="true"/>
+
+    <!--<com.ozaydin.serkan.com.image_zoom_view.ImageViewZoom-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/iv_det_qr_code2" />-->
+
+    <!--<com.iriis.libzoomableimageview.ZoomableImageView-->
+        <!--android:id="@+id/iv_zoomable"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true"/>-->
+
+</RelativeLayout>
+</layout>

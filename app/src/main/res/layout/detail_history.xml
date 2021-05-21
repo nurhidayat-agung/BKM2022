@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="dataHist"
+            type="com.nur_hidayat_agung.bkmmobile.model.history.DetailHistory"/>
+
+        <variable
+            name="callback"
+            type="com.nur_hidayat_agung.bkmmobile.callback.DetHistoryCallback"/>
+
+        <variable
+            name="pictCallback"
+            type="com.nur_hidayat_agung.bkmmobile.callback.PictureDetailCallBack" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.history.HistoryDetailActivity"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="420dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/history_bg_header" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="0dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/std_padding"
+                    android:paddingRight="@dimen/std_padding"
+                    android:paddingTop="@dimen/std_padding"
+                    android:paddingBottom="@dimen/std_padding">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".85"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nomor DO : "
+                            android:textColor="@color/bg_grey_"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{dataHist.history.getDoFromHistory}"
+                            android:textColor="@color/text_grey"
+                            android:textStyle="bold"
+                            android:id="@+id/tv_det_his_do_number"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"/>
+
+                        <TextView
+                            android:id="@+id/tv_travel_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="@{dataHist.history.travelDate}"
+                            android:layout_marginTop="5dp"
+                            android:layout_below="@+id/tv_det_his_do_number"
+                            android:textSize="10sp"
+                            android:textColor="@color/bg_grey_"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".15">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_centerInParent="true"
+                            android:id="@+id/iv_det_his_qr_code"
+                            app:imageUrlQR="@{dataHist.getQrcode}"
+                            android:onClick="@{() -> pictCallback.onClickPict(dataHist.getQrcode) }"
+                            />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_marginLeft="@dimen/std_padding_small"
+                    android:layout_marginRight="@dimen/std_padding_small"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimary"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/std_padding"
+                    android:paddingRight="@dimen/std_padding"
+                    android:paddingBottom="@dimen/std_padding_small"
+                    android:paddingTop="@dimen/std_padding_small">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".3"
+                        android:text="DO Kecil"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:textAlignment="textEnd"
+                        android:text="@{dataHist.sub_do}"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"
+                        android:id="@+id/tv_det_his_sub_do"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/std_padding"
+                    android:paddingRight="@dimen/std_padding"
+                    android:paddingBottom="@dimen/std_padding_small"
+                    android:paddingTop="@dimen/std_padding_small">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".3"
+                        android:text="SPB No"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:textAlignment="textEnd"
+                        android:text="@{dataHist.spb_number}"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"
+                        android:id="@+id/tv_det_his_spb_no"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/std_padding"
+                    android:paddingRight="@dimen/std_padding"
+                    android:paddingBottom="@dimen/std_padding_small"
+                    android:paddingTop="@dimen/std_padding_small">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".3"
+                        android:text="Pengemudi"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:textAlignment="textEnd"
+                        android:text="@{dataHist.driver_name}"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"
+                        android:id="@+id/tv_det_his_driver"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/std_padding"
+                    android:paddingRight="@dimen/std_padding"
+                    android:paddingBottom="@dimen/std_padding_small"
+                    android:paddingTop="@dimen/std_padding_small">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".3"
+                        android:text="No Kendaraan"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:textAlignment="textEnd"
+                        android:text="@{dataHist.vehicle_number}"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"
+                        android:id="@+id/tv_det_his_vehicle"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/std_padding"
+                    android:paddingRight="@dimen/std_padding"
+                    android:paddingBottom="@dimen/std_padding_small"
+                    android:paddingTop="@dimen/std_padding_small">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".3"
+                        android:text="Uang Jalan"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:textAlignment="textEnd"
+                        android:text="@{dataHist.trvl_expenses}"
+                        android:textSize="15sp"
+                        android:textColor="@color/text_grey"
+                        android:id="@+id/tv_det_his_trvl_expenses"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/std_padding"
+                    android:paddingRight="@dimen/std_padding"
+                    android:paddingBottom="@dimen/std_padding_small"
+                    android:paddingTop="@dimen/std_padding_small">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".3"
+                        android:text="PKS"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:textAlignment="textEnd"
+                        android:text="@{dataHist.pks_name}"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"
+                        android:id="@+id/tv_his_det_pks"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/std_padding"
+                    android:paddingRight="@dimen/std_padding"
+                    android:paddingBottom="@dimen/std_padding_small"
+                    android:paddingTop="@dimen/std_padding_small">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".4"
+                        android:text="Tujuan Bongkar"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".6"
+                        android:textAlignment="textEnd"
+                        android:text="@{dataHist.destination_name}"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"
+                        android:textStyle="bold"
+                        android:id="@+id/tv_his_det_dest"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/std_padding"
+                    android:paddingRight="@dimen/std_padding"
+                    android:paddingBottom="@dimen/std_padding_small"
+                    android:paddingTop="@dimen/std_padding_small">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".3"
+                        android:text="Produk"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:textAlignment="textEnd"
+                        android:text="@{dataHist.commodity_name}"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"
+                        android:textStyle="bold"
+                        android:id="@+id/tv_his_det_komodity"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/std_padding"
+                    android:paddingRight="@dimen/std_padding"
+                    android:paddingBottom="@dimen/std_padding_small"
+                    android:paddingTop="@dimen/std_padding_small">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".3"
+                        android:text="Bonus"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_grey"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/text_green"
+                        android:text="@{dataHist.history.bonus}"
+                        android:textSize="14sp"
+                        android:id="@+id/tv_his_det_bonus"
+                        android:textStyle="bold"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data Timbang"
+            android:padding="@dimen/std_padding"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/ll_main_do">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/std_padding"
+                android:paddingRight="@dimen/std_padding"
+                android:paddingBottom="@dimen/std_padding_small"
+                android:paddingTop="@dimen/std_padding_small">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:text="@{dataHist.getJustDO}"
+                    android:textSize="14sp"
+                    android:id="@+id/tv_his_det_main_do"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/std_padding"
+                android:paddingRight="@dimen/std_padding"
+                android:paddingBottom="@dimen/std_padding_small"
+                android:paddingTop="@dimen/std_padding_small">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:text="Jumlah Muat"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".7"
+                    android:textAlignment="textEnd"
+                    android:text="@{dataHist.getKGAmount_sent}"
+                    android:textSize="14sp"
+                    android:id="@+id/tv_his_det_load"
+                    android:textColor="@color/bg_grey_"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/std_padding"
+                android:paddingRight="@dimen/std_padding"
+                android:paddingBottom="@dimen/std_padding_small"
+                android:paddingTop="@dimen/std_padding_small">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".4"
+                    android:text="Jumlah Bongkar"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".6"
+                    android:textAlignment="textEnd"
+                    android:text="@{dataHist.getKgAmount_received}"
+                    android:textSize="14sp"
+                    android:id="@+id/tv_his_det_unload"
+                    android:textColor="@color/bg_grey_"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/std_padding"
+                android:paddingRight="@dimen/std_padding"
+                android:paddingBottom="@dimen/std_padding_small"
+                android:paddingTop="@dimen/std_padding_small">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:text="Tanggal Muat"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".7"
+                    android:textAlignment="textEnd"
+                    android:text="@{dataHist.load_date}"
+                    android:textSize="14sp"
+                    android:id="@+id/tv_his_det_load_date"
+                    android:textColor="@color/bg_grey_"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/std_padding"
+                android:paddingRight="@dimen/std_padding"
+                android:paddingBottom="@dimen/std_padding_small"
+                android:paddingTop="@dimen/std_padding_small">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".4"
+                    android:text="Tanggal Bongkar"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".6"
+                    android:textAlignment="textEnd"
+                    android:text="@{dataHist.unload_date}"
+                    android:textSize="14sp"
+                    android:id="@+id/tv_his_det_unload_date"
+                    android:textColor="@color/bg_grey_"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="@dimen/std_padding_small"
+            android:layout_marginRight="@dimen/std_padding_small"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/ll_connect_do"
+            android:visibility="@{dataHist.isConnect}" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/std_padding"
+                android:paddingRight="@dimen/std_padding"
+                android:paddingBottom="@dimen/std_padding_small"
+                android:paddingTop="@dimen/std_padding_small"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:text="@{dataHist.do_connectObject.do_number}"
+                    android:textSize="14sp"
+                    android:id="@+id/tv_his_det_connect_do"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/std_padding"
+                android:paddingRight="@dimen/std_padding"
+                android:paddingBottom="@dimen/std_padding_small"
+                android:paddingTop="@dimen/std_padding_small">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:text="Jumlah Muat"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".7"
+                    android:textAlignment="textEnd"
+                    android:text="@{dataHist.do_connectObject.getKgAmount_sent}"
+                    android:textSize="14sp"
+                    android:id="@+id/tv_his_det_conn_load"
+                    android:textColor="@color/bg_grey_"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/std_padding"
+            android:paddingRight="@dimen/std_padding"
+            android:paddingBottom="@dimen/std_padding_small"
+            android:paddingTop="@dimen/std_padding_small">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".4"
+                android:text="Jumlah Bongkar"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".6"
+                android:textAlignment="textEnd"
+                android:text="@{dataHist.do_connectObject.getKgAmount_received}"
+                android:textSize="14sp"
+                android:id="@+id/tv_his_det_conn_unload"
+                android:textColor="@color/bg_grey_"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/std_padding"
+                android:paddingRight="@dimen/std_padding"
+                android:paddingBottom="@dimen/std_padding_small"
+                android:paddingTop="@dimen/std_padding_small">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:text="Tanggal Muat"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".7"
+                    android:textAlignment="textEnd"
+                    android:text="@{dataHist.do_connectObject.load_date}"
+                    android:textSize="14sp"
+                    android:id="@+id/tv_his_det_conn_load_date"
+                    android:textColor="@color/bg_grey_"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/std_padding"
+                android:paddingRight="@dimen/std_padding"
+                android:paddingBottom="@dimen/std_padding_small"
+                android:paddingTop="@dimen/std_padding_small">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".4"
+                    android:text="Tanggal Bongkar"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".6"
+                    android:textAlignment="textEnd"
+                    android:text="@{dataHist.do_connectObject.unload_date}"
+                    android:textSize="14sp"
+                    android:id="@+id/tv_his_det_conn_unload_date"
+                    android:textColor="@color/bg_grey_"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="@dimen/std_padding"
+            android:background="@drawable/back_ground_round_grey2"
+            >
+
+            <com.iriis.libzoomableimageview.ZoomableImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:id="@+id/iv_det_hist_spb"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
+</layout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.nur_hidayat_agung.bkmmobile.viewmodel.security.ChangePassVM"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.security.SecurityFragment"
+        android:background="@drawable/bg_login">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/change_pass"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/colorPrimary"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/tiet_old_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Password lama"
+                        android:inputType="textPassword"
+                        android:padding="@dimen/std_padding_small"
+                        android:text="@={vm.changePass.oldPass}"
+                        />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/colorPrimary"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/tiet_new_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Password baru"
+                        android:inputType="textPassword"
+                        android:padding="@dimen/std_padding_small"
+                        android:text="@={vm.changePass.newPass}"
+                        />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/colorPrimary"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/tiet_confirm_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Konfirmasi password"
+                        android:inputType="textPassword"
+                        android:padding="@dimen/std_padding_small"
+                        android:text="@={vm.changePass.confirmPass}"
+                        />
+                </android.support.design.widget.TextInputLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:text="SUBMIT"
+                    android:background="@drawable/bg_round_grey"
+                    android:textColor="@color/whiteGrey"
+                    android:id="@+id/btn_change_pass"
+                    android:onClick="@{() -> vm.submit()}"
+                    />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+</layout>
