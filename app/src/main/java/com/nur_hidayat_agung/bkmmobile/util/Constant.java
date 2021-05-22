@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Constant {
 
-    public static String baseUrl = "https://berkatkarimar.com/restapi/";
+    public static String baseUrl = "http://berkatkarimar.co.id/restapi/";
     public static int conTimeOut = 30;
     public static String appName = "BKMMobile";
     public static String Token = "";
