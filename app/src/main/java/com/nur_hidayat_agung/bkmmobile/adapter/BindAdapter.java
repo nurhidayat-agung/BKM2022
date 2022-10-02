@@ -81,6 +81,25 @@ public class BindAdapter {
         textView.setText("Rp. " + price);
     }
 
+    @BindingAdapter({"statusFormat"})
+    public static void statusFormat(TextView textView, String status)
+    {
+        String txtStatus = "";
+        if (status.equalsIgnoreCase("p"))
+        {
+            txtStatus = "dalam proses";
+        }
+        else if (status.equalsIgnoreCase(""))
+        {
+            txtStatus = "menunggu";
+        }
+        else
+        {
+            txtStatus = status;
+        }
+        textView.setText(txtStatus);
+    }
+
     @BindingAdapter({"dateFormat"})
     public static void dateFormat(TextView textView, String sDate)
     {
@@ -88,10 +107,24 @@ public class BindAdapter {
         textView.setText(newDate);
     }
 
+    @BindingAdapter({"dateFormatComplete"})
+    public static void dateFormatComplete(TextView textView, String sDate)
+    {
+        String newDate = UtilFunc.reformatStringDate(sDate, Constant.dateFormatComplete, Constant.dateFormatCompleteUI);
+        textView.setText(newDate);
+    }
+
     @BindingAdapter({"showMore"})
     public static void showMore(TextView textView, String desc)
     {
-        String more = desc.substring(0,15) + " ...";
-        textView.setText(more);
+        if (desc.length() > 15)
+        {
+            String more = desc.substring(0,15) + " ...";
+            textView.setText(more);
+        }
+        else {
+            textView.setText(desc);
+        }
+
     }
 }

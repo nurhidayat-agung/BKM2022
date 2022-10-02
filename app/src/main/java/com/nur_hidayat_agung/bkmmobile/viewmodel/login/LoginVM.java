@@ -14,7 +14,9 @@ import com.nur_hidayat_agung.bkmmobile.model.login.LoginEnt;
 import com.nur_hidayat_agung.bkmmobile.model.login.LoginRes;
 import com.nur_hidayat_agung.bkmmobile.model.login.UserDetailRes;
 import com.nur_hidayat_agung.bkmmobile.model.general.GeneralResponse;
+import com.nur_hidayat_agung.bkmmobile.model.workshop.RespQueue;
 import com.nur_hidayat_agung.bkmmobile.repositories.LoginService;
+import com.nur_hidayat_agung.bkmmobile.repositories.WorkShopService;
 import com.nur_hidayat_agung.bkmmobile.util.Constant;
 import com.nur_hidayat_agung.bkmmobile.util.PopUpDialog;
 import com.nur_hidayat_agung.bkmmobile.util.SharedPref;
@@ -26,19 +28,21 @@ import io.reactivex.disposables.Disposable;
 
 public class LoginVM extends AndroidViewModel {
 
-    private LoginService loginService;
-    private BKMApp bkmApp;
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final LoginService loginService;
+    private final WorkShopService workShopService;
+    private final BKMApp bkmApp;
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     public MutableLiveData<LoginRes> loginResponseMutableLiveData = new MutableLiveData<>();
     public LoginEnt entLogin;
-    private Context context;
     public MutableLiveData<Boolean> pDialog = new MutableLiveData<>();
     public MutableLiveData<UserDetailRes> userDetailResMutableLiveData = new MutableLiveData<>();
-    private SharedPref sharedPref;
+    private final SharedPref sharedPref;
     private PopUpDialog popUpDialog;
     public MutableLiveData<LoginAnnouncement> annLiveData = new MutableLiveData<>();
     public MutableLiveData<Boolean> isLogout = new MutableLiveData<>();
     public MutableLiveData<Boolean> isConfig = new MutableLiveData<>();
+    public MutableLiveData<Boolean> isQueue = new MutableLiveData<>();
+    public RespQueue respQueue = new RespQueue();
 
 
 
@@ -46,12 +50,12 @@ public class LoginVM extends AndroidViewModel {
         super(application);
         bkmApp = BKMApp.create(application);
         loginService = BaseContext.CreateService(LoginService.class,application);
+        workShopService = BaseContext.CreateService(WorkShopService.class,application);
         entLogin = new LoginEnt();
         sharedPref = new SharedPref(application);
     }
 
     public void setContext(Context context) {
-        this.context = context;
         popUpDialog = new PopUpDialog(context, new GeneralResponse());
     }
 
@@ -208,4 +212,45 @@ public class LoginVM extends AndroidViewModel {
     }
 
 
+    public void getWorkShopQueue() {
+        isQueue.setValue(false);
+        Disposable disposable = workShopService.getQueue(sharedPref.getUserDetail().getDriver_id())
+                .subscribeOn(bkmApp.subscribeScheduler())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response ->
+                {
+                    if (response.data != null)
+                    {
+                        respQueue = response;
+                        isQueue.setValue(true);
+                    }
+                    pDialog.setValue(false);
+                }, throwable -> {
+                    Log.i("loginLogBkm","Request Error : " + throwable.getMessage());
+                    pDialog.setValue(false);
+                });
+        compositeDisposable.add(disposable);
+    }
+
+    public void cancelWSRegistration()
+    {
+        pDialog.setValue(true);
+        Disposable disposable = workShopService.cancelRegis(respQueue.data.id)
+                .subscribeOn(bkmApp.subscribeScheduler())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response ->
+                {
+                    pDialog.setValue(false);
+                    if (response.status != Constant.ReqCreated)
+                    {
+                        respQueue = null;
+                        isQueue.setValue(false);
+                        getWorkShopQueue();
+                    }
+                }, throwable -> {
+                    Log.i("loginLogBkm","Request Error : " + throwable.getMessage());
+                    pDialog.setValue(false);
+                });
+        compositeDisposable.add(disposable);
+    }
 }

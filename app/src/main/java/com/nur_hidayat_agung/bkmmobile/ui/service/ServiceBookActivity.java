@@ -88,6 +88,6 @@ public class ServiceBookActivity extends AppCompatActivity {
         binding.rvServiceBook.setLayoutManager(layoutManager);
         binding.rvServiceBook.setAdapter(serviceHistoryAdapter);
 
-        vehicleID = sharedPref.getUserDetail().vehicle.id;
+        vehicleID = (sharedPref.getUserDetail().vehicle != null && sharedPref.getUserDetail().vehicle.id != null) ? sharedPref.getUserDetail().vehicle.id : "-1";
     }
 }

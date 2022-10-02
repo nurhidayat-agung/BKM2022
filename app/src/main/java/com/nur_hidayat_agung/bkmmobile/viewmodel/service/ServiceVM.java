@@ -111,7 +111,7 @@ public class ServiceVM extends AndroidViewModel {
     }
 
     public void getServiceAlert() {
-        String vecId = sharedPref.getUserDetail().vehicle.id;
+        String vecId = (sharedPref.getUserDetail().vehicle != null && sharedPref.getUserDetail().vehicle.id != null) ? sharedPref.getUserDetail().vehicle.id : "-1";
         // vecId = "45";
         isServiceAlert.setValue(false);
         liveDataPdialog.setValue(true);

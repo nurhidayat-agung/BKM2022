@@ -100,11 +100,12 @@ public class PartServiceActivity extends AppCompatActivity {
         serviceVM = ViewModelProviders.of(this).get(ServiceVM.class);
         gson = new Gson();
 
+
         layoutManager = new LinearLayoutManager(this);
         listPartAdapter = new ListPartAdapter(this,new ArrayList<>(),part -> {
             Intent intent = new Intent(this,ReplacementPartHistoryActivity.class);
             intent.putExtra(Constant.intentExtraPart, gson.toJson(part));
-            intent.putExtra(Constant.intentExtraVehicleID, sharedPref.getUserDetail().vehicle.id);
+            intent.putExtra(Constant.intentExtraVehicleID, (sharedPref.getUserDetail().vehicle != null && sharedPref.getUserDetail().vehicle.id != null) ? sharedPref.getUserDetail().vehicle.id : "-1");
             startActivity(intent);
         });
         binding.rvPartService.setLayoutManager(layoutManager);

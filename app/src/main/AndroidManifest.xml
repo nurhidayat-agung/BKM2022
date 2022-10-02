@@ -34,8 +34,13 @@
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute"
         tools:replace="android:icon">
-        <activity android:name=".ui.service.DetailServisBookActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ui.workshop.WorkShopActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity
+            android:name=".ui.service.DetailServisBookActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.service.ServiceAlertActivity" />
         <activity
             android:name=".ui.service.ReplacementPartHistoryActivity"

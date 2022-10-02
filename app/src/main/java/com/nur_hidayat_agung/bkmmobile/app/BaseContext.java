@@ -44,6 +44,7 @@ public class BaseContext {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()));
 
 
+
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
                 .readTimeout(Constant.conTimeOut, TimeUnit.SECONDS)
                 .connectTimeout(Constant.conTimeOut, TimeUnit.SECONDS)

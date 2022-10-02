@@ -9,17 +9,22 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.SnapHelper;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +34,7 @@ import com.nur_hidayat_agung.bkmmobile.R;
 import com.nur_hidayat_agung.bkmmobile.adapter.AnnouncementAdapter;
 import com.nur_hidayat_agung.bkmmobile.adapter.MenuAdapter;
 import com.nur_hidayat_agung.bkmmobile.callback.ListMenuCallback;
+import com.nur_hidayat_agung.bkmmobile.databinding.DialogWsCardBinding;
 import com.nur_hidayat_agung.bkmmobile.databinding.FragmentHomeBinding;
 import com.nur_hidayat_agung.bkmmobile.model.general.GeneralResponse;
 import com.nur_hidayat_agung.bkmmobile.model.login.UserDetailRes;
@@ -39,7 +45,9 @@ import com.nur_hidayat_agung.bkmmobile.ui.service.PartServiceActivity;
 import com.nur_hidayat_agung.bkmmobile.ui.service.ServiceAlertActivity;
 import com.nur_hidayat_agung.bkmmobile.ui.service.ServiceBookActivity;
 import com.nur_hidayat_agung.bkmmobile.ui.trip.TripActivity;
+import com.nur_hidayat_agung.bkmmobile.ui.workshop.WorkShopActivity;
 import com.nur_hidayat_agung.bkmmobile.util.Constant;
+import com.nur_hidayat_agung.bkmmobile.util.PDialog;
 import com.nur_hidayat_agung.bkmmobile.util.PopUpDialog;
 import com.nur_hidayat_agung.bkmmobile.util.SharedPref;
 import com.nur_hidayat_agung.bkmmobile.util.UtilFunc;
@@ -54,6 +62,7 @@ import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
+    private static final int DIALOG_QUEST_CODE = 121;
     private FragmentHomeBinding binding;
     private SharedPref sharedPref;
     private UserDetailRes userDetailRes;
@@ -64,6 +73,8 @@ public class HomeFragment extends Fragment {
     private LoginVM vm;
     private ServiceVM serviceVM;
     private Dialog dialog;
+    private DialogWsCardBinding wsCardBinding;
+    private PDialog pDialog;
 
     @Nullable
     @Override
@@ -73,6 +84,13 @@ public class HomeFragment extends Fragment {
             // Toast.makeText(getActivity(),"refresh ",Toast.LENGTH_SHORT).show();
             vm.getUserDetail(userDetailRes.firebase_token);
         });
+
+        binding.ivShowServiceCard.setOnClickListener(v -> {
+            // showDialogFullscreen();
+            // showCustomDialog();
+            showServiceCard();
+        });
+
         initData();
         setRV();
         Log.i("homeLogBKM", "json string from home activity: " + sharedPref.getString(Constant.userDetail));
@@ -83,6 +101,7 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         vm.getUserDetail(userDetailRes.firebase_token);
+        vm.getWorkShopQueue();
         setRV();
         //Toast.makeText(getActivity(),"restart",Toast.LENGTH_SHORT).show();
     }
@@ -96,6 +115,7 @@ public class HomeFragment extends Fragment {
     private void initData() {
         sharedPref = new SharedPref(getActivity());
         userDetailRes = sharedPref.getUserDetail();
+        pDialog = new PDialog(getActivity());
         if (userDetailRes != null) {
             binding.setUserDetail(userDetailRes);
             for (int a = 0; a < userDetailRes.announcement.size(); a++) {
@@ -139,6 +159,23 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+
+        vm.isQueue.observe(getActivity(), aBoolean -> {
+            if (aBoolean)
+            {
+                binding.llQueue.setVisibility(View.VISIBLE);
+                binding.tvQueueStatus.setText(vm.respQueue.data.message);
+            }
+            else
+            {
+                binding.llQueue.setVisibility(View.GONE);
+                binding.tvQueueStatus.setText("");
+            }
+        });
+
+        vm.pDialog.observe(getActivity(),aBoolean -> {
+            pDialog.setDialog(aBoolean);
+        });
     }
 
 
@@ -178,6 +215,8 @@ public class HomeFragment extends Fragment {
             startActivity(new Intent(getActivity(), PartServiceActivity.class));
         if (itemMenu.keyWord.equals(Constant.menuService))
             startActivity(new Intent(getActivity(), ServiceBookActivity.class));
+        if (itemMenu.keyWord.equals(Constant.menuWorkShop))
+            startActivity(new Intent(getActivity(), WorkShopActivity.class));
     };
 
     private void showDialogDark() {
@@ -250,6 +289,85 @@ public class HomeFragment extends Fragment {
                 " anda, tekan tombol \"OK\" jika benar anda sudah melakukan service.");
         builder.setPositiveButton("OK", (dialogInterface, i) -> {
             serviceVM.saveService(idService, desc, serviceDate);
+        });
+        builder.setNegativeButton("Tidak", null);
+        builder.show();
+    }
+
+    private void showCustomDialog() {
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        dialog.setContentView(R.layout.dialog_ws_card);
+        dialog.setCancelable(true);
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+
+        ((AppCompatButton) dialog.findViewById(R.id.btn_close_service_card)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), ((AppCompatButton) v).getText().toString() + " Clicked", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+    }
+
+    private void showDialogFullscreen() {
+        FragmentManager fragmentManager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+        DialogFullscreenFragment newFragment = new DialogFullscreenFragment();
+        newFragment.setRequestCode(DIALOG_QUEST_CODE);
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        transaction.add(android.R.id.content, newFragment).addToBackStack(null).commit();
+        newFragment.setOnCallbackResult((requestCode, obj) -> {
+            if (requestCode == DIALOG_QUEST_CODE) {
+                displayDataResult(new Object());
+            }
+        });
+    }
+
+    private void displayDataResult(Object o) {
+
+    }
+
+    private void showServiceCard() {
+        dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        wsCardBinding = DialogWsCardBinding.inflate(LayoutInflater.from(getActivity()),null);
+        wsCardBinding.setQueue(vm.respQueue.data);
+        dialog.setContentView(wsCardBinding.getRoot());
+        wsCardBinding.executePendingBindings();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        Window window = dialog.getWindow();
+        WindowManager.LayoutParams params = window.getAttributes();
+        params.gravity = Gravity.CENTER;
+        double width = sharedPref.getInt(Constant.windowWidth) * 0.95;
+        params.width = (int) width;
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
+        wsCardBinding.btnCloseServiceCard.setOnClickListener(v -> {
+            dialog.dismiss();
+        });
+        wsCardBinding.btnCancelWorkshop.setOnClickListener(v -> {
+            dialog.dismiss();
+            showConfirmDialogCancelRegis();
+        });
+        dialog.show();
+    }
+
+    private void showConfirmDialogCancelRegis() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Batalkan Pendaftaran Service");
+        builder.setMessage("Apakah anda yakin akan membatalkan pendaftaran perbaikan" +
+                ", tekan tombol \"OK\" jika benar");
+        builder.setPositiveButton("OK", (dialogInterface, i) -> {
+            vm.cancelWSRegistration();
         });
         builder.setNegativeButton("Tidak", null);
         builder.show();

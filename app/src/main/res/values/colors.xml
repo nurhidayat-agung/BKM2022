@@ -39,6 +39,7 @@
     <color name="overlay_dark_80">#CC000000</color>
     <color name="overlay_dark_90">#E6000000</color>
 
+    <color name="gray">#bfbfbf</color>
     <color name="overlay_light_10">#1AFFFFFF</color>
     <color name="overlay_light_20">#33FFFFFF</color>
     <color name="overlay_light_30">#4DFFFFFF</color>

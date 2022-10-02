@@ -33,6 +33,7 @@ import com.nur_hidayat_agung.bkmmobile.model.login.UserDetailRes;
 import com.nur_hidayat_agung.bkmmobile.ui.login.LoginActivity;
 import com.nur_hidayat_agung.bkmmobile.ui.security.SecurityFragment;
 import com.nur_hidayat_agung.bkmmobile.util.Constant;
+import com.nur_hidayat_agung.bkmmobile.util.PDialog;
 import com.nur_hidayat_agung.bkmmobile.util.SharedPref;
 import com.nur_hidayat_agung.bkmmobile.viewmodel.login.LoginVM;
 
@@ -84,6 +85,7 @@ public class HomeActivity extends AppCompatActivity
                 }
             }
         });
+
     }
 
 
