@@ -1,6 +1,8 @@
 package com.nur_hidayat_agung.bkmmobile.adapter;
 
 import android.annotation.SuppressLint;
+import android.text.SpannableString;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -12,6 +14,8 @@ import android.widget.TextView;
 import com.nur_hidayat_agung.bkmmobile.R;
 import com.nur_hidayat_agung.bkmmobile.util.Constant;
 import com.nur_hidayat_agung.bkmmobile.util.UtilFunc;
+
+import cn.nekocode.badge.BadgeDrawable;
 
 public class BindAdapter {
 
@@ -85,19 +89,72 @@ public class BindAdapter {
     public static void statusFormat(TextView textView, String status)
     {
         String txtStatus = "";
+        int color = 0;
         if (status.equalsIgnoreCase("p"))
         {
             txtStatus = "dalam proses";
+            color = 0xff336699;
         }
-        else if (status.equalsIgnoreCase(""))
+        else if (status.equalsIgnoreCase("w"))
         {
             txtStatus = "menunggu";
+            color = 0xffed9111;
         }
         else
         {
             txtStatus = status;
+            color = 0xff29d6d9;
         }
-        textView.setText(txtStatus);
+
+        final BadgeDrawable drawable2 =
+                new BadgeDrawable.Builder()
+                        .type(BadgeDrawable.TYPE_ONLY_ONE_TEXT)
+                        .badgeColor(color)
+                        .text1(txtStatus)
+                        .build();
+
+        SpannableString spannableString =
+                new SpannableString(TextUtils.concat(
+                        drawable2.toSpannable()
+                ));
+
+        textView.setText(spannableString);
+    }
+
+    @BindingAdapter({"bind:status_code_case", "bind:status_desc_case"})
+    public static void statusFormatv2(TextView textView, String status_code_case, String status_desc_case)
+    {
+        int color = 0;
+        if (status_code_case.equalsIgnoreCase("p"))
+        {
+            color = 0xff336699;
+        }
+        else if (status_code_case.equalsIgnoreCase("w"))
+        {
+            color = 0xffed9111;
+        }
+        else if (status_code_case.equalsIgnoreCase("c"))
+        {
+            color = 0xff424242;
+        }
+        else
+        {
+            color = 0xff29d6d9;
+        }
+
+        final BadgeDrawable drawable2 =
+                new BadgeDrawable.Builder()
+                        .type(BadgeDrawable.TYPE_ONLY_ONE_TEXT)
+                        .badgeColor(color)
+                        .text1(status_desc_case)
+                        .build();
+
+        SpannableString spannableString =
+                new SpannableString(TextUtils.concat(
+                        drawable2.toSpannable()
+                ));
+
+        textView.setText(spannableString);
     }
 
     @BindingAdapter({"dateFormat"})
@@ -110,7 +167,7 @@ public class BindAdapter {
     @BindingAdapter({"dateFormatComplete"})
     public static void dateFormatComplete(TextView textView, String sDate)
     {
-        String newDate = UtilFunc.reformatStringDate(sDate, Constant.dateFormatComplete, Constant.dateFormatCompleteUI);
+        String newDate = UtilFunc.reformatStringDate(sDate, Constant.dateFormatComplete, Constant.dateFormatUI);
         textView.setText(newDate);
     }
 

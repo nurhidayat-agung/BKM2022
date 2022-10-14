@@ -38,6 +38,7 @@ public class WorkShopVM extends AndroidViewModel {
     public MutableLiveData<Boolean> pDialog = new MutableLiveData<>();
     public MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     public MutableLiveData<Boolean> isAnyData = new MutableLiveData<>();
+    public MutableLiveData<Boolean> backToHome = new MutableLiveData<>();
     public MutableLiveData<String> txtMessage = new MutableLiveData<>();
     public List<ItemWL> itemWLList = new ArrayList<>();
     public List<ItemHistoryWorkShop> itemHistoryWorkShops = new ArrayList<>();
@@ -125,10 +126,12 @@ public class WorkShopVM extends AndroidViewModel {
                 .subscribe(response ->
                 {
                     pDialog.setValue(false);
-                    if (response.status != Constant.ReqCreated) {
-
-                    }
                     txtMessage.setValue(response.message);
+                    if (response.status == Constant.ReqCreated) {
+                        sharedPref.setBool(Constant.isInTheQueue,true);
+                        backToHome.setValue(true);
+                    }
+
                 }, throwable -> {
                     pDialog.setValue(false);
                     try {

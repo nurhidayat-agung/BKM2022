@@ -19,7 +19,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_middle">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -27,16 +28,25 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.33"
+                    android:layout_weight="0.3"
                     android:textAlignment="textStart"
-                    android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
                     android:text="Kode Pend." />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.67"
+                    android:layout_weight="0.05"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text=":" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -51,21 +61,30 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.33"
+                    android:layout_weight="0.3"
                     android:textAlignment="textStart"
-                    android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
                     android:text="Tgl Pend." />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.67"
+                    android:layout_weight="0.05"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text=":" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
-                    android:text="@{history.registerAt}" />
+                    app:dateFormatComplete="@{history.registerAt}" />
             </LinearLayout>
 
             <LinearLayout
@@ -75,21 +94,30 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.33"
+                    android:layout_weight="0.3"
                     android:textAlignment="textStart"
-                    android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
-                    android:text="Tgl Perb." />
+                    android:text="Tgl Masuk" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.67"
+                    android:layout_weight="0.05"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text=":" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
-                    android:text="@{history.checkin}" />
+                    app:dateFormatComplete="@{history.checkin}" />
             </LinearLayout>
 
             <LinearLayout
@@ -99,16 +127,58 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.33"
+                    android:layout_weight="0.3"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text="Tgl Keluar" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text=":" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:textAlignment="textStart"
                     android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    app:dateFormatComplete="@{history.checkout}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:textAlignment="textStart"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
                     android:text="Kendala" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.67"
+                    android:layout_weight="0.05"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text=":" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -123,16 +193,25 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.33"
+                    android:layout_weight="0.3"
                     android:textAlignment="textStart"
-                    android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
                     android:text="Deskripsi" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.67"
+                    android:layout_weight="0.05"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text=":" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -149,16 +228,62 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.33"
+                    android:layout_weight="0.3"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text="Status" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text=":" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
-                    android:text="Part Diganti" />
+                    app:status_code_case="@{history.status}"
+                    app:status_desc_case="@{history.status_desc}"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.67"
+                    android:layout_weight="0.3"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text="Daftar Barang" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text=":" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"

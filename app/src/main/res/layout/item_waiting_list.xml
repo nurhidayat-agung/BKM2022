@@ -10,7 +10,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/std_padding_small"
+        android:padding="@dimen/spacing_middle"
         app:cardCornerRadius="7dp"
         app:cardElevation="5dp"
         app:cardUseCompatPadding="true"
@@ -19,7 +19,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_middle">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -27,16 +28,23 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.33"
+                    android:layout_weight="0.3"
                     android:textAlignment="textStart"
-                    android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
                     android:text="Kode Pend." />
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.67"
+                    android:layout_weight="0.05"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text=":" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -51,16 +59,25 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.33"
+                    android:layout_weight="0.3"
                     android:textAlignment="textStart"
-                    android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
                     android:text="Nama Driver" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.67"
+                    android:layout_weight="0.05"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text=":" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -75,16 +92,25 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.33"
+                    android:layout_weight="0.3"
                     android:textAlignment="textStart"
-                    android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
                     android:text="No Pol." />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.67"
+                    android:layout_weight="0.05"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text=":" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -99,21 +125,30 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.33"
+                    android:layout_weight="0.3"
                     android:textAlignment="textStart"
-                    android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
                     android:text="Tgl Pend." />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.67"
+                    android:layout_weight="0.05"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text=":" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
-                    android:text="@{waitlist.registerAt}" />
+                    app:dateFormatComplete="@{waitlist.registerAt}" />
             </LinearLayout>
 
             <LinearLayout
@@ -123,16 +158,25 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.33"
+                    android:layout_weight="0.3"
                     android:textAlignment="textStart"
-                    android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
                     android:text="Kendala" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.67"
+                    android:layout_weight="0.05"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text=":" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -147,49 +191,102 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.33"
+                    android:layout_weight="0.3"
                     android:textAlignment="textStart"
-                    android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
-                    android:text="Deskripsi" />
+                    android:text="Status" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.67"
+                    android:layout_weight="0.05"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    android:padding="@dimen/std_padding_small2"
+                    android:text=":" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:padding="@dimen/std_padding_small2"
-                    android:text="@{waitlist.description}" />
-
-
+                    app:status_code_case="@{waitlist.status}"
+                    app:status_desc_case="@{waitlist.status_desc}" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.33"
-                    android:textAlignment="textStart"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
-                    android:text="Part Diganti" />
-                <TextView
-                    android:layout_width="0dp"
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:visibility="gone">-->
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="0.3"-->
+<!--                    android:textAlignment="textStart"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:padding="@dimen/std_padding_small2"-->
+<!--                    android:text="Deskripsi" />-->
 
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.67"
-                    android:textAlignment="textStart"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
-                    android:text="@{waitlist.sparepartTrxCode}" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="0.05"-->
+<!--                    android:textAlignment="textStart"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:padding="@dimen/std_padding_small2"-->
+<!--                    android:text=":" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="0.65"-->
+<!--                    android:textAlignment="textStart"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:padding="@dimen/std_padding_small2"-->
+<!--                    android:text="@{waitlist.description}" />-->
+
+
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:visibility="gone">-->
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="0.3"-->
+<!--                    android:textAlignment="textStart"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:padding="@dimen/std_padding_small2"-->
+<!--                    android:text="Part Diganti" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="0.05"-->
+<!--                    android:textAlignment="textStart"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:padding="@dimen/std_padding_small2"-->
+<!--                    android:text=":" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="0.65"-->
+<!--                    android:textAlignment="textStart"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:padding="@dimen/std_padding_small2"-->
+<!--                    android:text="@{waitlist.sparepartTrxCode}" />-->
+<!--            </LinearLayout>-->
 
         </LinearLayout>
 

@@ -214,6 +214,7 @@ public class LoginVM extends AndroidViewModel {
 
     public void getWorkShopQueue() {
         isQueue.setValue(false);
+        sharedPref.setBool(Constant.isInTheQueue,false);
         Disposable disposable = workShopService.getQueue(sharedPref.getUserDetail().getDriver_id())
                 .subscribeOn(bkmApp.subscribeScheduler())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -223,6 +224,7 @@ public class LoginVM extends AndroidViewModel {
                     {
                         respQueue = response;
                         isQueue.setValue(true);
+                        sharedPref.setBool(Constant.isInTheQueue,true);
                     }
                     pDialog.setValue(false);
                 }, throwable -> {
@@ -241,7 +243,7 @@ public class LoginVM extends AndroidViewModel {
                 .subscribe(response ->
                 {
                     pDialog.setValue(false);
-                    if (response.status != Constant.ReqCreated)
+                    if (response.status == Constant.ReqCreated)
                     {
                         respQueue = null;
                         isQueue.setValue(false);

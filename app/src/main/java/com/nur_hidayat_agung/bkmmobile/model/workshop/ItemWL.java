@@ -37,6 +37,10 @@ public class ItemWL {
     @SerializedName("status")
     public String status;
 
+    @SerializedName("status_desc")
+    public String status_desc;
+
+
     @SerializedName("sparepart_trx_code")
     public String sparepartTrxCode;
 

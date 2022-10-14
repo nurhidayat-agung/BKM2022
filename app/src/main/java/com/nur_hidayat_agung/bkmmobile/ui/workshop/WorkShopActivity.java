@@ -49,7 +49,14 @@ public class WorkShopActivity extends AppCompatActivity {
 
     private void initListener() {
         binding.btnRegis.setOnClickListener(v -> {
-            showDialogReason();
+            if (!sharedPref.getBool(Constant.isInTheQueue))
+            {
+                showDialogReason();
+            }
+            else {
+                Toast.makeText(this, Constant.Message.AlreadyQueue, Toast.LENGTH_SHORT).show();
+            }
+            
         });
     }
 
@@ -87,6 +94,14 @@ public class WorkShopActivity extends AppCompatActivity {
             {
                 Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
                 vm.txtMessage.setValue("");
+            }
+        });
+
+        vm.backToHome.observe(this, aBoolean -> {
+            if (Boolean.TRUE.equals(aBoolean))
+            {
+                vm.backToHome.setValue(false);
+                finish();
             }
         });
     }

@@ -112,4 +112,9 @@ public class Constant {
     public static String dateFormatUI = "dd MMM yyyy";
     public static String dateFormatCompleteUI = "dd MMM yyyy HH:mm:ss";
     public static String detailService = "detailService";
+    public static String isInTheQueue = "isInTheQueue";
+
+    public static class Message {
+        public static String AlreadyQueue = "Maaf pendaftaran hanya bisa di lakukan sekali dalam satu waktu";
+    }
 }
