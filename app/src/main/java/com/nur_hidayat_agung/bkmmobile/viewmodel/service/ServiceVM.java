@@ -13,7 +13,10 @@ import com.nur_hidayat_agung.bkmmobile.model.service.RemindItem;
 import com.nur_hidayat_agung.bkmmobile.model.service.ServiceItem;
 import com.nur_hidayat_agung.bkmmobile.model.service.ItemListPart;
 import com.nur_hidayat_agung.bkmmobile.model.service.ItemPartReplacementHistory;
+import com.nur_hidayat_agung.bkmmobile.model.workshop.DataItemWorkshopGetReason;
 import com.nur_hidayat_agung.bkmmobile.repositories.ServiceService;
+import com.nur_hidayat_agung.bkmmobile.repositories.WorkShopService;
+import com.nur_hidayat_agung.bkmmobile.room.AppDatabase;
 import com.nur_hidayat_agung.bkmmobile.util.Constant;
 import com.nur_hidayat_agung.bkmmobile.util.SharedPref;
 import com.nur_hidayat_agung.bkmmobile.util.UtilFunc;
@@ -28,6 +31,7 @@ import io.reactivex.disposables.Disposable;
 
 public class ServiceVM extends AndroidViewModel {
     private ServiceService service;
+    private WorkShopService wsService;
     private BKMApp bkmApp;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     public MutableLiveData<Boolean> liveDataPdialog = new MutableLiveData<>();
@@ -40,13 +44,16 @@ public class ServiceVM extends AndroidViewModel {
     private Context context;
     private SharedPref sharedPref;
     public RemindItem serviceActive = new RemindItem();
+    public AppDatabase roomDB;
 
     public ServiceVM(@NonNull Application application) {
         super(application);
         bkmApp = BKMApp.create(application);
         service = BaseContext.CreateService(ServiceService.class, application);
+        wsService = BaseContext.CreateService(WorkShopService.class, application);
         this.context = application;
         sharedPref = new SharedPref(application);
+        roomDB = AppDatabase.getDatabase(application);
     }
 
     public void fetchPartList() {
@@ -184,5 +191,23 @@ public class ServiceVM extends AndroidViewModel {
             }
         }
         ldPartList.setValue(tempList);
+    }
+
+    public void getReasonWorkShop() {
+        Disposable disposable = wsService.getWSReason()
+                .subscribeOn(bkmApp.subscribeScheduler())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(resp -> {
+                    if (resp.status == 200)
+                    {
+                        roomDB.reasonDAO().deleteAll();
+                        for (DataItemWorkshopGetReason datum : resp.data) {
+                            roomDB.reasonDAO().persists(datum);
+                        }
+                    }
+                }, ex -> {
+                    Log.i("WSLogBkm", "Request Error : " + ex.getMessage());
+                });
+        compositeDisposable.add(disposable);
     }
 }

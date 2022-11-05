@@ -22,6 +22,7 @@ public class Constant {
 
     //
     public static String userDetail = "userDetail";
+    public static String userMenu = "userMenu";
     public static String detHistory = "detHistory";
     public static String detPictHist = "detPictHist";
     public static String detTrip = "detTrip";
@@ -70,6 +71,16 @@ public class Constant {
     public static String menuService = "menuService";
     public static String menuWorkShop = "menuWorkShop";
 
+
+    // menu api constant
+    public static String menuApiHistory = "m_history";
+    public static String menuApiTrip = "m_trip";
+    public static String menuApiSalary = "m_salry";
+    public static String menuApiHelp = "m_help";
+    public static String menuApiPart = "m_part";
+    public static String menuApiService = "m_services";
+    public static String menuApiWorkShop = "m_workshop";
+
     public static List<ItemMenu> itemMenus = new ArrayList<ItemMenu>(){{
         add(new ItemMenu(1,"Pengangkutan Baru", R.drawable.menu_trip, Constant.menuTrip));
         add(new ItemMenu(2,"Riwayat Pengangkutan", R.drawable.menu_history, Constant.menuHistory));
@@ -113,6 +124,7 @@ public class Constant {
     public static String dateFormatCompleteUI = "dd MMM yyyy HH:mm:ss";
     public static String detailService = "detailService";
     public static String isInTheQueue = "isInTheQueue";
+    public static String dbName = "bkm.database";
 
     public static class Message {
         public static String AlreadyQueue = "Maaf pendaftaran hanya bisa di lakukan sekali dalam satu waktu";

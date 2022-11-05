@@ -6,6 +6,7 @@ import com.nur_hidayat_agung.bkmmobile.model.workshop.RespHistoryWorkShop;
 import com.nur_hidayat_agung.bkmmobile.model.workshop.RespQueue;
 import com.nur_hidayat_agung.bkmmobile.model.workshop.RespRegisWS;
 import com.nur_hidayat_agung.bkmmobile.model.workshop.RespWL;
+import com.nur_hidayat_agung.bkmmobile.model.workshop.RespWorkshopGetReason;
 
 import java.util.List;
 
@@ -62,4 +63,12 @@ public interface WorkShopService {
             "Content-Type: application/json; charset=UTF-8"
     })
     Observable<RespWL> getWL();
+
+    @GET("workshops/reasons")
+    @Headers({
+            "Client-Service: driver-client",
+            "Auth-Key: bkmrestapi",
+            "Content-Type: application/json; charset=UTF-8"
+    })
+    Observable<RespWorkshopGetReason> getWSReason();
 }

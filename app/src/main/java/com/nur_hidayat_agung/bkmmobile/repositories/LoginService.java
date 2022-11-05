@@ -1,6 +1,7 @@
 package com.nur_hidayat_agung.bkmmobile.repositories;
 
 import com.nur_hidayat_agung.bkmmobile.model.general.ConfigResponse;
+import com.nur_hidayat_agung.bkmmobile.model.home.RespGetMenu;
 import com.nur_hidayat_agung.bkmmobile.model.login.LoginAnnouncement;
 import com.nur_hidayat_agung.bkmmobile.model.login.LoginRes;
 import com.nur_hidayat_agung.bkmmobile.model.login.UserDetailRes;
@@ -61,6 +62,15 @@ public interface LoginService {
             "Content-Type: application/json"
     })
     Observable<LoginAnnouncement> getAnnouncement();
+
+
+    @GET("menu/")
+    @Headers({
+            "Client-Service: driver-client",
+            "Auth-Key: bkmrestapi",
+            "Content-Type: application/json"
+    })
+    Observable<RespGetMenu> getMenu();
 
 
     @FormUrlEncoded

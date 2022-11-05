@@ -4,7 +4,7 @@
     <data>
         <variable
             name="itemMenu"
-            type="com.nur_hidayat_agung.bkmmobile.model.general.ItemMenu" />
+            type="com.nur_hidayat_agung.bkmmobile.model.home.DataItemMenu" />
         <variable
             name="callback"
             type="com.nur_hidayat_agung.bkmmobile.callback.ListMenuCallback"/>

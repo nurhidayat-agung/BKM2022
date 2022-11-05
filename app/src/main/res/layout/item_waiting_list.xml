@@ -31,7 +31,7 @@
                     android:layout_weight="0.3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="Kode Pend." />
                 <TextView
                     android:layout_width="0dp"
@@ -39,7 +39,7 @@
                     android:layout_weight="0.05"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text=":" />
                 <TextView
                     android:layout_width="0dp"
@@ -48,7 +48,7 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="@{waitlist.code}" />
             </LinearLayout>
 
@@ -62,7 +62,7 @@
                     android:layout_weight="0.3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="Nama Driver" />
 
                 <TextView
@@ -71,7 +71,7 @@
                     android:layout_weight="0.05"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text=":" />
 
                 <TextView
@@ -81,7 +81,7 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="@{waitlist.driver.driver_name}" />
             </LinearLayout>
 
@@ -95,7 +95,7 @@
                     android:layout_weight="0.3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="No Pol." />
 
                 <TextView
@@ -104,7 +104,7 @@
                     android:layout_weight="0.05"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text=":" />
 
                 <TextView
@@ -114,7 +114,7 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="@{waitlist.vehicle.vehicle_number}" />
             </LinearLayout>
 
@@ -128,7 +128,7 @@
                     android:layout_weight="0.3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="Tgl Pend." />
 
                 <TextView
@@ -137,7 +137,7 @@
                     android:layout_weight="0.05"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text=":" />
 
                 <TextView
@@ -147,7 +147,7 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     app:dateFormatComplete="@{waitlist.registerAt}" />
             </LinearLayout>
 
@@ -161,7 +161,7 @@
                     android:layout_weight="0.3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="Kendala" />
 
                 <TextView
@@ -170,7 +170,7 @@
                     android:layout_weight="0.05"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text=":" />
 
                 <TextView
@@ -180,7 +180,7 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="@{waitlist.reason}" />
             </LinearLayout>
 
@@ -194,7 +194,6 @@
                     android:layout_weight="0.3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
                     android:text="Status" />
 
                 <TextView
@@ -202,8 +201,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.05"
                     android:textAlignment="textStart"
+                    android:paddingLeft="@dimen/spacing_xsmall"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
                     android:text=":" />
 
                 <TextView
@@ -213,7 +212,7 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:layout_marginTop="@dimen/spacing_xmedium"
                     app:status_code_case="@{waitlist.status}"
                     app:status_desc_case="@{waitlist.status_desc}" />
             </LinearLayout>

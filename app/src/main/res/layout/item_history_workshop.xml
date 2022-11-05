@@ -31,7 +31,7 @@
                     android:layout_weight="0.3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="Kode Pend." />
 
                 <TextView
@@ -40,7 +40,7 @@
                     android:layout_weight="0.05"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text=":" />
 
                 <TextView
@@ -50,7 +50,7 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="@{history.code}" />
             </LinearLayout>
 
@@ -64,7 +64,7 @@
                     android:layout_weight="0.3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="Tgl Pend." />
 
                 <TextView
@@ -73,7 +73,7 @@
                     android:layout_weight="0.05"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text=":" />
 
                 <TextView
@@ -83,7 +83,7 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     app:dateFormatComplete="@{history.registerAt}" />
             </LinearLayout>
 
@@ -97,7 +97,7 @@
                     android:layout_weight="0.3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="Tgl Masuk" />
 
                 <TextView
@@ -106,7 +106,7 @@
                     android:layout_weight="0.05"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text=":" />
 
                 <TextView
@@ -116,7 +116,7 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     app:dateFormatComplete="@{history.checkin}" />
             </LinearLayout>
 
@@ -130,7 +130,7 @@
                     android:layout_weight="0.3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="Tgl Keluar" />
 
                 <TextView
@@ -139,7 +139,7 @@
                     android:layout_weight="0.05"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text=":" />
 
                 <TextView
@@ -149,7 +149,7 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     app:dateFormatComplete="@{history.checkout}" />
             </LinearLayout>
 
@@ -163,7 +163,7 @@
                     android:layout_weight="0.3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="Kendala" />
 
                 <TextView
@@ -172,7 +172,7 @@
                     android:layout_weight="0.05"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text=":" />
 
                 <TextView
@@ -182,7 +182,7 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="@{history.reason}" />
             </LinearLayout>
 
@@ -196,7 +196,7 @@
                     android:layout_weight="0.3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="Deskripsi" />
 
                 <TextView
@@ -205,7 +205,7 @@
                     android:layout_weight="0.05"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text=":" />
 
                 <TextView
@@ -215,7 +215,7 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="@{history.description}" />
 
 
@@ -231,7 +231,6 @@
                     android:layout_weight="0.3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
                     android:text="Status" />
 
                 <TextView
@@ -240,7 +239,7 @@
                     android:layout_weight="0.05"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:paddingLeft="@dimen/spacing_xsmall"
                     android:text=":" />
 
                 <TextView
@@ -250,7 +249,7 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:layout_marginTop="@dimen/padding_8"
                     app:status_code_case="@{history.status}"
                     app:status_desc_case="@{history.status_desc}"
                     />
@@ -268,7 +267,7 @@
                     android:layout_weight="0.3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="Daftar Barang" />
 
                 <TextView
@@ -277,7 +276,7 @@
                     android:layout_weight="0.05"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text=":" />
 
                 <TextView
@@ -287,7 +286,7 @@
                     android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:padding="@dimen/std_padding_small2"
+                    android:padding="@dimen/spacing_xsmall"
                     android:text="@{history.remarkPart}" />
             </LinearLayout>
 

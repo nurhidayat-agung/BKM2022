@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.nur_hidayat_agung.bkmmobile.R;
 import com.nur_hidayat_agung.bkmmobile.databinding.ActivitySplashScreenBinding;
+import com.nur_hidayat_agung.bkmmobile.room.AppDatabase;
 import com.nur_hidayat_agung.bkmmobile.util.Constant;
 import com.nur_hidayat_agung.bkmmobile.util.PDialog;
 import com.nur_hidayat_agung.bkmmobile.util.SharedPref;
@@ -24,6 +25,7 @@ public class SplashScreen extends AppCompatActivity {
     private SharedPref sharedPref;
     private LoginVM loginVM;
     private PDialog pDialog;
+    private AppDatabase roomDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +35,8 @@ public class SplashScreen extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_splash_screen);
         sharedPref = new SharedPref(this);
+        roomDB = AppDatabase.getDatabase(this);
         loginVM = ViewModelProviders.of(this).get(LoginVM.class);
-        loginVM.setContext(this);
         pDialog = new PDialog(this);
         loginVM.pDialog.observe(this,aBoolean -> { if (aBoolean != null) pDialog.setDialog(aBoolean); });
         loginVM.isConfig.observe(this,aBoolean -> {

@@ -5,7 +5,10 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.nur_hidayat_agung.bkmmobile.model.home.RespGetMenu;
 import com.nur_hidayat_agung.bkmmobile.model.login.UserDetailRes;
+
+import java.util.List;
 
 public class SharedPref {
 
@@ -90,6 +93,15 @@ public class SharedPref {
         return spe.commit();
     }
 
+    public boolean setUserMenu(RespGetMenu respGetMenu)
+    {
+        Gson gson = new Gson();
+        String json = gson.toJson(respGetMenu);
+        Log.i("sharedPrefLogBKM", "toJson : " + json);
+        spe.putString(Constant.userMenu,json);
+        return spe.commit();
+    }
+
     public UserDetailRes getUserDetail()
     {
         String res = sp.getString(Constant.userDetail,"");
@@ -104,5 +116,21 @@ public class SharedPref {
         if (userDetailRes == null) Log.i("sharedPrefLogBKM", "toObj : Convert result is null");
         Log.i("sharedPrefLogBKM", "toObj : " + userDetailRes.getUser_id());
         return userDetailRes;
+    }
+
+    public RespGetMenu getUserMenu()
+    {
+        String res = sp.getString(Constant.userMenu,"");
+        Log.i("sharedPrefLogBKM", "fromJson : " + res);
+        if (!UtilFunc.isStringNotNull(res))
+        {
+            Log.i("sharedPrefLogBKM", "fromJson dari dlm null");
+            return null;
+        }
+        Gson gson = new Gson();
+        RespGetMenu respGetMenu = gson.fromJson(res, RespGetMenu.class);
+        if (respGetMenu == null) Log.i("sharedPrefLogBKM", "toObj : Convert result is null");
+        Log.i("sharedPrefLogBKM", "toObj : " + respGetMenu.message);
+        return respGetMenu;
     }
 }

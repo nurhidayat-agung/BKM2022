@@ -1,5 +1,6 @@
 package com.nur_hidayat_agung.bkmmobile.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
@@ -8,24 +9,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.nur_hidayat_agung.bkmmobile.R;
 import com.nur_hidayat_agung.bkmmobile.callback.ListMenuCallback;
 import com.nur_hidayat_agung.bkmmobile.databinding.ItemMenuBinding;
 import com.nur_hidayat_agung.bkmmobile.model.general.ItemMenu;
+import com.nur_hidayat_agung.bkmmobile.model.home.DataItemMenu;
 import com.nur_hidayat_agung.bkmmobile.util.Constant;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MenuAdapter  extends RecyclerView.Adapter<MenuAdapter.MenuVH>{
     private Context context;
-    private List<ItemMenu> itemMenuList = Constant.itemMenus;
+    private List<DataItemMenu> itemMenuList = new ArrayList<>();
     private final ListMenuCallback listMenuCallback;
     private Integer count;
 
-    public MenuAdapter(Context context, ListMenuCallback listMenuCallback, Integer count) {
+    @SuppressLint("NotifyDataSetChanged")
+    public void setItemMenuList(List<DataItemMenu> itemMenuList) {
+        this.itemMenuList = itemMenuList;
+        notifyDataSetChanged();
+    }
+
+    public MenuAdapter(Context context, ListMenuCallback listMenuCallback, Integer count, List<DataItemMenu> itemMenuList) {
         this.context = context;
         this.listMenuCallback = listMenuCallback;
         this.count = count;
+        this.itemMenuList = itemMenuList;
     }
 
     @NonNull
@@ -39,7 +50,7 @@ public class MenuAdapter  extends RecyclerView.Adapter<MenuAdapter.MenuVH>{
 
     @Override
     public void onBindViewHolder(@NonNull MenuVH menuVH, int i) {
-        ItemMenu itemMenu = itemMenuList.get(i);
+        DataItemMenu itemMenu = itemMenuList.get(i);
         int isCount = View.GONE;
         if (i == 0 && count > 0)
         {
@@ -66,12 +77,12 @@ public class MenuAdapter  extends RecyclerView.Adapter<MenuAdapter.MenuVH>{
             this.context = context;
         }
 
-        public void setMenuBinding(ItemMenu menu, Integer isCount, Integer Count)
+        public void setMenuBinding(DataItemMenu menu, Integer isCount, Integer Count)
         {
             menuBinding.setItemMenu(menu);
             menuBinding.setCount(Count.toString());
             menuBinding.setIsCount(isCount);
-            menuBinding.ivItemMenu.setImageDrawable(context.getResources().getDrawable(menu.imageID));
+            Glide.with(context).load(menu.icon).into(menuBinding.ivItemMenu);
             menuBinding.executePendingBindings();
         }
     }

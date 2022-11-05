@@ -111,6 +111,7 @@ public class BindAdapter {
                         .type(BadgeDrawable.TYPE_ONLY_ONE_TEXT)
                         .badgeColor(color)
                         .text1(txtStatus)
+                        .padding(7, 10, 7, 10, 7)
                         .build();
 
         SpannableString spannableString =
@@ -147,6 +148,7 @@ public class BindAdapter {
                         .type(BadgeDrawable.TYPE_ONLY_ONE_TEXT)
                         .badgeColor(color)
                         .text1(status_desc_case)
+                        .padding(7, 10, 7, 10, 7)
                         .build();
 
         SpannableString spannableString =

@@ -16,7 +16,7 @@
         <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/activity_work_shop.xml" value="0.2" />
         <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/dialog_event.xml" value="0.2" />
         <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/dialog_fill_reason_ws.xml" value="0.2" />
-        <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/dialog_service_book_fragment.xml" value="0.12760416666666666" />
+        <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/dialog_service_book_fragment.xml" value="0.4" />
         <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/dialog_ws_card.xml" value="0.264" />
         <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/fragment_queue.xml" value="0.1265625" />
@@ -25,8 +25,9 @@
         <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/item_history2.xml" value="0.264" />
         <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/item_history_workshop.xml" value="0.264" />
         <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/item_menu.xml" value="0.1265625" />
-        <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/item_part_replacement_history.xml" value="0.1265625" />
+        <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/item_part_replacement_history.xml" value="0.536" />
         <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/item_part_service.xml" value="0.12708333333333333" />
+        <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/item_service_book_history.xml" value="0.4" />
         <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/item_trip.xml" value="0.176" />
         <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/item_waiting_list.xml" value="0.264" />
         <entry key="..\:/Coding/BKM_Guilt/BKMMobile/app/src/main/res/layout/pop_up_log_out.xml" value="0.12708333333333333" />

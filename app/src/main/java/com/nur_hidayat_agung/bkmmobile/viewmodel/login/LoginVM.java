@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.nur_hidayat_agung.bkmmobile.app.BKMApp;
 import com.nur_hidayat_agung.bkmmobile.app.BaseContext;
+import com.nur_hidayat_agung.bkmmobile.model.home.DataItemMenu;
 import com.nur_hidayat_agung.bkmmobile.model.login.LoginAnnouncement;
 import com.nur_hidayat_agung.bkmmobile.model.login.LoginEnt;
 import com.nur_hidayat_agung.bkmmobile.model.login.LoginRes;
@@ -21,6 +22,8 @@ import com.nur_hidayat_agung.bkmmobile.util.Constant;
 import com.nur_hidayat_agung.bkmmobile.util.PopUpDialog;
 import com.nur_hidayat_agung.bkmmobile.util.SharedPref;
 import com.nur_hidayat_agung.bkmmobile.util.UtilFunc;
+
+import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -42,6 +45,7 @@ public class LoginVM extends AndroidViewModel {
     public MutableLiveData<Boolean> isLogout = new MutableLiveData<>();
     public MutableLiveData<Boolean> isConfig = new MutableLiveData<>();
     public MutableLiveData<Boolean> isQueue = new MutableLiveData<>();
+    public MutableLiveData<List<DataItemMenu>> ldMenuItem = new MutableLiveData<>();
     public RespQueue respQueue = new RespQueue();
 
 
@@ -53,10 +57,7 @@ public class LoginVM extends AndroidViewModel {
         workShopService = BaseContext.CreateService(WorkShopService.class,application);
         entLogin = new LoginEnt();
         sharedPref = new SharedPref(application);
-    }
-
-    public void setContext(Context context) {
-        popUpDialog = new PopUpDialog(context, new GeneralResponse());
+        popUpDialog = new PopUpDialog(application, new GeneralResponse());
     }
 
     public void getConfig()
@@ -185,6 +186,24 @@ public class LoginVM extends AndroidViewModel {
                 }, throwable -> {
                     Log.i("loginLogBkm","Request Error : " + throwable.getMessage());
                     pDialog.setValue(false);
+                });
+        compositeDisposable.add(disposable);
+    }
+
+    public void getMenu()
+    {
+        Disposable disposable = loginService.getMenu()
+                .subscribeOn(bkmApp.subscribeScheduler())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response ->
+                {
+                    if (response != null)
+                    {
+                        sharedPref.setUserMenu(response);
+                        ldMenuItem.setValue(response.data);
+                    }
+                }, throwable -> {
+                    Log.i("loginLogBkm","Request Error : " + throwable.getMessage());
                 });
         compositeDisposable.add(disposable);
     }

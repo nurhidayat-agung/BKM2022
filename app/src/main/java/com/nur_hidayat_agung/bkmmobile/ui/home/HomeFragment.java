@@ -92,6 +92,7 @@ public class HomeFragment extends Fragment {
         });
 
         initData();
+        initObserver();
         setRV();
         Log.i("homeLogBKM", "json string from home activity: " + sharedPref.getString(Constant.userDetail));
         return binding.getRoot();
@@ -103,7 +104,24 @@ public class HomeFragment extends Fragment {
         vm.getUserDetail(userDetailRes.firebase_token);
         vm.getWorkShopQueue();
         setRV();
+
+        initMenu();
         //Toast.makeText(getActivity(),"restart",Toast.LENGTH_SHORT).show();
+    }
+
+    private void initMenu() {
+        if (sharedPref.getUserMenu() != null)
+        {
+            if (sharedPref.getUserMenu().data != null)
+            {
+                menuAdapter.setItemMenuList(sharedPref.getUserMenu().data);
+            }
+        }
+
+
+        vm.getMenu();
+
+
     }
 
     @Override
@@ -115,6 +133,7 @@ public class HomeFragment extends Fragment {
     private void initData() {
         sharedPref = new SharedPref(getActivity());
         userDetailRes = sharedPref.getUserDetail();
+
         pDialog = new PDialog(getActivity());
         if (userDetailRes != null) {
             binding.setUserDetail(userDetailRes);
@@ -128,8 +147,11 @@ public class HomeFragment extends Fragment {
         popUpDialog = new PopUpDialog(getActivity(), new GeneralResponse());
         vm = ViewModelProviders.of(this).get(LoginVM.class);
         serviceVM = ViewModelProviders.of(this).get(ServiceVM.class);
-        vm.setContext(getActivity());
 
+        serviceVM.getReasonWorkShop();
+    }
+
+    private void initObserver() {
         vm.userDetailResMutableLiveData.observe(this, userDetailRes1 -> {
             binding.swipeContainer.setRefreshing(false);
             if (userDetailRes1 != null) {
@@ -161,27 +183,28 @@ public class HomeFragment extends Fragment {
         });
 
         vm.isQueue.observe(getActivity(), aBoolean -> {
-            if (aBoolean)
-            {
+            if (aBoolean) {
                 binding.llQueue.setVisibility(View.VISIBLE);
                 binding.tvQueueStatus.setText(vm.respQueue.data.message);
-            }
-            else
-            {
+            } else {
                 binding.llQueue.setVisibility(View.GONE);
                 binding.tvQueueStatus.setText("");
             }
         });
 
-        vm.pDialog.observe(getActivity(),aBoolean -> {
+        vm.pDialog.observe(getActivity(), aBoolean -> {
             pDialog.setDialog(aBoolean);
+        });
+
+        vm.ldMenuItem.observe(getActivity(), dataItemMenus -> {
+            menuAdapter.setItemMenuList(dataItemMenus);
         });
     }
 
 
     private void setRV() {
         userDetailRes = sharedPref.getUserDetail();
-        menuAdapter = new MenuAdapter(getActivity(), this.menuCallback, userDetailRes.getNumber_of_trip());
+        menuAdapter = new MenuAdapter(getActivity(), this.menuCallback, userDetailRes.getNumber_of_trip(), new ArrayList<>());
         binding.rvMenu.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getActivity()),
                 DividerItemDecoration.HORIZONTAL));
         binding.rvMenu.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getActivity()),
@@ -203,19 +226,19 @@ public class HomeFragment extends Fragment {
 
     public final ListMenuCallback menuCallback = itemMenu -> {
         //Toast.makeText(getActivity(),"keyword : " + itemMenu.keyWord, Toast.LENGTH_SHORT).show();
-        if (itemMenu.keyWord.equals(Constant.menuTrip))
+        if (itemMenu.className.equals(Constant.menuApiTrip))
             startActivity(new Intent(getActivity(), TripActivity.class));
-        if (itemMenu.keyWord.equals(Constant.menuHistory))
+        if (itemMenu.className.equals(Constant.menuApiHistory))
             startActivity(new Intent(getActivity(), HistoryActivity.class));
-        if (itemMenu.keyWord.equals(Constant.menuHelp))
+        if (itemMenu.className.equals(Constant.menuApiHelp))
             startActivity(new Intent(getActivity(), HelpActivity.class));
-        if (itemMenu.keyWord.equals(Constant.menuSalary))
+        if (itemMenu.className.equals(Constant.menuApiSalary))
             startActivity(new Intent(getActivity(), SalaryActivity.class));
-        if (itemMenu.keyWord.equals(Constant.menuPart))
+        if (itemMenu.className.equals(Constant.menuApiPart))
             startActivity(new Intent(getActivity(), PartServiceActivity.class));
-        if (itemMenu.keyWord.equals(Constant.menuService))
+        if (itemMenu.className.equals(Constant.menuApiService))
             startActivity(new Intent(getActivity(), ServiceBookActivity.class));
-        if (itemMenu.keyWord.equals(Constant.menuWorkShop))
+        if (itemMenu.className.equals(Constant.menuApiWorkShop))
             startActivity(new Intent(getActivity(), WorkShopActivity.class));
     };
 
@@ -339,7 +362,7 @@ public class HomeFragment extends Fragment {
     private void showServiceCard() {
         dialog = new Dialog(getActivity());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        wsCardBinding = DialogWsCardBinding.inflate(LayoutInflater.from(getActivity()),null);
+        wsCardBinding = DialogWsCardBinding.inflate(LayoutInflater.from(getActivity()), null);
         wsCardBinding.setQueue(vm.respQueue.data);
         dialog.setContentView(wsCardBinding.getRoot());
         wsCardBinding.executePendingBindings();
